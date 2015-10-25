@@ -1,0 +1,12 @@
+{
+  "Keywords":"houz",
+  "Description":"Houz",
+  "ClientID": "147646131078.apps.googleusercontent.com",
+  "RedirectUri": "http://minh-vu-apps.appspot.com/execute/Oauth2CallbackOp",
+  "UploadFolder": "0B_7oWLwA2E9FcW5vNU50QnFJdUE",
+  "UserId": "deployman1@gmail.com",
+  "Email": "deployman1@gmail.com",
+  "From": "Muffin",
+  "Admins": "developers@atosoftware.com",
+  "Domain": "https://www.muffin.com"
+}

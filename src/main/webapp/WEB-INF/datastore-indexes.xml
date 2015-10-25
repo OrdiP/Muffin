@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datastore-indexes autoGenerate="false">
+  <!-- Base indexes -->
+  <datastore-index kind="Template" ancestor="false" source="manual">
+    <property name="Labels" direction="asc"/>
+    <property name="Updated" direction="desc"/>
+  </datastore-index>
+  <datastore-index kind="Event" ancestor="false" source="manual">
+    <property name="Name" direction="asc"/>
+    <property name="Created" direction="desc"/>
+  </datastore-index>
+</datastore-indexes>
