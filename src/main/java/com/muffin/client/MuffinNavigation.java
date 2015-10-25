@@ -11,11 +11,6 @@ public class MuffinNavigation extends BaseNavigation {
   public MuffinNavigation() {
     super();
     appearance.fixedTop();
-    appearance.addItem(MuffinSection.targets);
-    appearance.addItem(CoreSection.core.demoForm());
-    appearance.addItem(CoreSection.core.demoTable());
-    appearance.addItem(CoreSection.core.settings());
-    appearance.addItem(CoreSection.core.templates());
   }
 
   @Override
