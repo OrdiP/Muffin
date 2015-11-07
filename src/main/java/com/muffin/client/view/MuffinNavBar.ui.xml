@@ -1,0 +1,10 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:m="urn:import:gwt.material.design.client.ui">
+  <m:MaterialNavBar wave="dark blue" align="center"  color="blue" text="Muffin">
+    <m:nav><m:MaterialLink ui:field="findYourJob" text="Find Your Job" textColor="white" /></m:nav>
+    <m:nav><m:MaterialLink ui:field="postAJob" text="Post A Job" textColor="white"/></m:nav>
+    <m:nav><m:MaterialLink ui:field="companyReview" text="Company Review" textColor="white"/></m:nav>
+    <m:nav><m:MaterialLink ui:field="login" text="Login" textColor="white"/></m:nav>
+  </m:MaterialNavBar>
+</ui:UiBinder>

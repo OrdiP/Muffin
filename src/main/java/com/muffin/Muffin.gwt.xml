@@ -3,6 +3,7 @@
 <module>
 
   <inherits name="com.mvu.theme.bootstrap.Bootstrap"/>
+  <inherits name="gwt.material.design.GwtMaterialDesign" />
 
   <entry-point class='com.muffin.client.Muffin'/>
 

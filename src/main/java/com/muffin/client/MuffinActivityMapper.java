@@ -1,10 +1,13 @@
 package com.muffin.client;
 
 import com.google.gwt.core.client.GWT;
+import com.muffin.client.view.SearchJobs;
+import com.muffin.client.view.login.Login;
 import com.mvu.core.client.BaseAsyncCallback;
 import com.mvu.core.client.CoreActivityMapper;
 import com.mvu.core.client.JsBean;
 import com.mvu.core.client.NeedPermissionAction;
+import com.mvu.core.shared.Action;
 import com.mvu.core.shared.Place;
 import com.mvu.core.shared.typekey.CoreSection;
 import com.muffin.client.view.RedirectsView;
@@ -30,6 +33,27 @@ public class MuffinActivityMapper extends CoreActivityMapper {
         });
       }
     });
+    add(MuffinSection.login, new Action<Place>() {
+      @Override
+      public void execute(final Place place) {
+        GWT.runAsync(new BaseAsyncCallback() {
+          public void onCodeDownloaded() {
+            placeController().reallyGoTo(place, new Login());
+          }
+        });
+      }
+    });
+    add(MuffinSection.search, new Action<Place>() {
+      @Override
+      public void execute(final Place place) {
+        GWT.runAsync(new BaseAsyncCallback() {
+          public void onCodeDownloaded() {
+            placeController().reallyGoTo(place, new SearchJobs());
+          }
+        });
+      }
+    });
+
 
   }
 
