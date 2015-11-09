@@ -13,6 +13,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.muffin.shared.MuffinSection;
 import com.mvu.core.client.BaseActivity;
 import com.mvu.core.client.Core;
 import com.mvu.core.client.JsCallback;
@@ -48,6 +49,9 @@ public class Login implements IsWidget, BaseActivity {
   @UiField
   MaterialButton btnLogin;
 
+  @UiField
+  MaterialButton signupBtn;
+
   @Override
   public Widget asWidget() {
     return rootElement;
@@ -71,6 +75,12 @@ public class Login implements IsWidget, BaseActivity {
         login();
       }
     });
+    signupBtn.addClickHandler(new ClickHandler() {
+      @Override
+      public void onClick(ClickEvent event) {
+        signup();
+      }
+    });
   }
 
   private void login() {
@@ -83,6 +93,10 @@ public class Login implements IsWidget, BaseActivity {
         placeController().goTo(CoreSection.core.myAccount());
       }
     });
+  }
+
+  private void signup() {
+    PlaceController.placeController().goTo(MuffinSection.sign_up);
   }
 
   public HasFields getValues() {

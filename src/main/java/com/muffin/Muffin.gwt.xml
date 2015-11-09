@@ -2,8 +2,9 @@
         "http://google-web-toolkit.googlecode.com/svn/releases/2.0/distro-source/core/src/gwt-module.dtd">
 <module>
 
-  <inherits name="com.mvu.theme.bootstrap.Bootstrap"/>
+  <inherits name="com.muffin.theme.material.Material"/>
   <inherits name="gwt.material.design.GwtMaterialDesign" />
+  <stylesheet src="css/flat-ui-pro.min.css?v=1"/>
 
   <entry-point class='com.muffin.client.Muffin'/>
 

@@ -27,7 +27,7 @@ public class MuffinTools extends Tools {
       @Override
       public Object call() throws Exception {
         loadTypes(true, TYPES);
-        //createJobPosts();
+        createJobPosts();
         return createSuperUser("su@test.com");
       }
     });

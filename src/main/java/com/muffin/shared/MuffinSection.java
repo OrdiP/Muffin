@@ -7,7 +7,7 @@ public enum MuffinSection {
   targets, login, search {
     @Override
     public String toString() {
-      return "Find Your Job";
+      return "Find Job";
     }
-  }, post_job, review_companies
+  }, post_job, sign_up, companies_review
 }

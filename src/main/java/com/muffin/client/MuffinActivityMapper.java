@@ -2,6 +2,7 @@ package com.muffin.client;
 
 import com.google.gwt.core.client.GWT;
 import com.muffin.client.view.SearchJobs;
+import com.muffin.client.view.Signup;
 import com.muffin.client.view.login.Login;
 import com.mvu.core.client.BaseAsyncCallback;
 import com.mvu.core.client.CoreActivityMapper;
@@ -49,6 +50,16 @@ public class MuffinActivityMapper extends CoreActivityMapper {
         GWT.runAsync(new BaseAsyncCallback() {
           public void onCodeDownloaded() {
             placeController().reallyGoTo(place, new SearchJobs());
+          }
+        });
+      }
+    });
+    add(MuffinSection.sign_up, new Action<Place>() {
+      @Override
+      public void execute(final Place place) {
+        GWT.runAsync(new BaseAsyncCallback() {
+          public void onCodeDownloaded() {
+            placeController().reallyGoTo(place, new Signup());
           }
         });
       }

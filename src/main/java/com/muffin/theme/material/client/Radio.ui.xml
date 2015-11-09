@@ -1,0 +1,9 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+        >
+  <div class="radio">
+    <label>
+      <input type="radio" ui:field="inputElem"/>
+      <span ui:field="labelElem"/>
+    </label>
+  </div>
+</ui:UiBinder>

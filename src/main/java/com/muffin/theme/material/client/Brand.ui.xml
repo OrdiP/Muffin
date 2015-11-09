@@ -1,0 +1,7 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+        >
+  <div style="padding-left: 30px;margin-top: 5px;background-repeat: no-repeat;">
+    <div ui:field="text" class="white-text">
+    </div>
+  </div>
+</ui:UiBinder>

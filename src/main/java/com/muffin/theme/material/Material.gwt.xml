@@ -1,0 +1,11 @@
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.0//EN"
+        "http://google-web-toolkit.googlecode.com/svn/releases/2.0/distro-source/core/src/gwt-module.dtd">
+<module>
+  <inherits name='com.mvu.core.Core'/>
+  <entry-point class='com.muffin.theme.material.client.Material'/>
+
+
+  <replace-with class="com.muffin.theme.material.client.MaterialClientFactory">
+    <when-type-is class="com.mvu.core.client.CoreClientFactory"/>
+  </replace-with>
+</module>
