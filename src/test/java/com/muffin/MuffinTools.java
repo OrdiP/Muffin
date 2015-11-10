@@ -3,13 +3,19 @@ package com.muffin;
 import java.util.concurrent.Callable;
 
 import com.muffin.shared.entity.JobPost;
+import com.mvu.appengine.Bean;
 import com.mvu.appengine.Bundle;
 import com.mvu.appengine.RemoteAPI;
 import com.mvu.appengine.Tools;
+import com.mvu.appengine.server.op.user.RegisterOp;
+import com.mvu.core.client.Permission;
+import com.mvu.core.server.JSON;
 import com.mvu.core.shared.Type;
 import com.mvu.core.shared.entity.Configuration;
+import com.mvu.core.shared.entity.Credential;
 import com.mvu.core.shared.entity.EventListener;
 import com.mvu.core.shared.entity.Template;
+import com.mvu.core.shared.entity.User;
 import org.junit.Test;
 import org.quartz.Job;
 
@@ -31,6 +37,25 @@ public class MuffinTools extends Tools {
         return createSuperUser("su@test.com");
       }
     });
+  }
+
+  public Bean createSuperUser(String email) throws Exception {
+    //        Server.init();
+    final Bundle bundle = new Bundle();
+    if (bundle.exists(Credential.TYPE.entityName(), email)) {
+      bundle.get(User.TYPE, email).delete();
+      bundle.get(Credential.TYPE, email).delete();
+    }
+    final JSON params = JSON.make(User.FirstName, "System")
+            .set(User.keyName, email)
+            .set("role", "Admin")
+            .set(User.LastName, "User")
+            .set(User.Email, email)
+            .set(Credential.Password, "pppppp");
+    params.addToList(User.Permissions, false, Permission.ADMIN.name());
+    params.addToList(User.Permissions, false, Permission.SYSTEM.name());
+    return new RegisterOp().execute(params);
+//        return null;
   }
 
   private void createJobPosts() {

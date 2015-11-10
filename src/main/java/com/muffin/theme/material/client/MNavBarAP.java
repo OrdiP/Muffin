@@ -22,9 +22,11 @@ import com.mvu.core.client.view.DebugAction;
 import com.mvu.core.client.widget.DropdownMenu;
 import com.mvu.core.client.widget.Navs;
 import com.mvu.core.shared.Action;
+import com.mvu.core.shared.Attempt;
 import com.mvu.core.shared.Place;
 import com.mvu.core.shared.SharedConstants;
 
+import static com.mvu.core.client.PlaceController.placeController;
 import static com.mvu.core.shared.typekey.CoreSection.core;
 
 
@@ -43,12 +45,49 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
     nav.getStyle().setPaddingRight(50, Style.Unit.PX);
   }
 
+  @Override
+  public LIElement createItem(String name, String label, final Attempt<String> command) {
+    final AnchorElement anchor = createAnchor(name, label);
+    JsUtil.addClickHandler(anchor, new Action<String>() {
+      @Override
+      public void execute(String name) {
+        if (command.attempt(name)) {
+          selectItem(name);
+          //          hide();
+        }
+      }
+    });
+    return createItem(name, anchor);
+  }
+
+  private AnchorElement createAnchor(String name, String label) {
+    final AnchorElement anchor = Document.get().createAnchorElement();
+    anchor.setHref("javascript:;");
+    if(name != null) {
+      anchor.setAttribute(SharedConstants.DATA_NAME, name);
+    }
+    anchor.addClassName("white-text");
+    anchor.setInnerHTML(label);
+    return anchor;
+  }
+
   public Element addItem(String label, Place place, boolean right) {
     final LIElement liElement = createItem(label, place);
     liElement.getStyle().setFontSize(17, Style.Unit.PX);
     liElement.addClassName("waves-effect waves-light white-text");
     add(right, liElement);
     return liElement.getFirstChildElement();
+  }
+
+  protected LIElement createItem(String html, final Place place) {
+    final AnchorElement anchorElement = createAnchor(null, html);
+    JsUtil.addClickHandler(anchorElement, new Action<String>() {
+      @Override
+      public void execute(String values) {
+        placeController().goTo(place);
+      }
+    });
+    return createItem(place.toString(), anchorElement);
   }
 
   public Element addButton(String label, final Place place) {

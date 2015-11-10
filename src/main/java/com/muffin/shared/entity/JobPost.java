@@ -3,6 +3,7 @@ package com.muffin.shared.entity;
 import java.util.List;
 
 import com.mvu.core.shared.Type;
+import com.mvu.core.shared.datatype.LongType;
 import com.mvu.core.shared.datatype.StringType;
 import com.mvu.core.shared.entity.Keyable;
 import com.mvu.core.shared.field.FK;
@@ -16,6 +17,6 @@ public interface JobPost extends Keyable {
 
   Field<String> title = TYPE.f("title", true, StringType.instance());
   Field<String> description = TYPE.f("description", true, StringType.instance());
-  FK<String> company = TYPE.fk("company", StringType.key()).ref(Company.TYPE);
-  Field<List<String>> keywords = TYPE.f("keywords", StringType.instance().listType());
+  FK<Long> company = TYPE.fk("company", LongType.instance()).ref(Company.TYPE);
+  Field<List<String>> keywords = TYPE.f("keywords", StringType.label().listType());
 }

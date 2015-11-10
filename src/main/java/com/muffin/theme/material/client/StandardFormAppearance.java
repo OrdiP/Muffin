@@ -87,7 +87,7 @@ public class StandardFormAppearance extends BaseFormAppearance {
   public ComplexPanel ensureFooter() {
     if (footer == null) {
       footer = new FlowPanel();
-      footer.setStyleName("panel-footer");
+      footer.setStyleName("panel-footer blue");
       panel.add(footer);
     }
     return footer;
@@ -104,7 +104,7 @@ public class StandardFormAppearance extends BaseFormAppearance {
   public FlowPanel ensureHeadingPanel() {
     if (headingPanel == null) {
       headingPanel = new FlowPanel();
-      headingPanel.setStyleName("panel-heading");
+      headingPanel.setStyleName("panel-heading white-text blue");
       headingPanel.getElement().getStyle().setTextAlign(Style.TextAlign.CENTER);
       panel.insert(headingPanel, 0);
       heading = Document.get().createHElement(headingSize);

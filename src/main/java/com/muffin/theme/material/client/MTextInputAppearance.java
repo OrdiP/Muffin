@@ -11,6 +11,7 @@ import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.ValueBoxBase;
+import com.mvu.core.shared.DataType;
 import com.mvu.core.shared.input.TextInputAppearance;
 
 /**
@@ -56,6 +57,14 @@ public class MTextInputAppearance extends MInputAppearance implements TextInputA
   @Override
   public void addValueChangeHandler(ValueChangeHandler<String> changeHandler) {
     textBox.addValueChangeHandler(changeHandler);
+  }
+
+  @Override
+  public void mask(String pattern) {
+  }
+
+  @Override
+  public void mask(DataType dataType) {
   }
 
   @Override

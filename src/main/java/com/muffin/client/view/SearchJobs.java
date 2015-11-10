@@ -32,6 +32,7 @@ import gwt.material.design.client.ui.animate.Transition;
  */
 public class SearchJobs implements BaseActivity{
 
+  private final MaterialButton moreBtn;
   private MaterialPanel searchPanel;
   @UiField
   InputElement searchBox;
@@ -39,6 +40,8 @@ public class SearchJobs implements BaseActivity{
   MaterialButton searchBtn;
   @UiField
   MaterialContainer cardsPanel;
+
+  int displayingItems = 0;
 
   @Override
   public void start(AcceptsOneWidget panel, Place place) {
@@ -56,19 +59,23 @@ public class SearchJobs implements BaseActivity{
     searchBtn.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent event) {
-        new RemoteCall(ServerOps.FindOp).set(Keyable.kind, JobPost.TYPE.entityName())
+        new RemoteCall(ServerOps.FindOp)
+                .set(Keyable.kind, JobPost.TYPE.entityName())
+                .set(JobPost.keywords, Arrays.asList(searchBox.getValue()))
                 .execute(new JSONCallback<JsCellData>() {
                   @Override
                   protected void processJS(JsCellData result) {
+                    displayingItems = 0;
                     createCards(result);
                   }
                 });
       }
     });
-    final MaterialButton moreBtn = new MaterialButton("More", "blue", "purpose");
+    moreBtn = new MaterialButton("More", "blue", "purpose");
     moreBtn.setWaves("light");
     moreBtn.setTooltip("Load more results");
-
+    moreBtn.setStyleName(ColumnSize.LG_12.getCssName());
+    moreBtn.setVisible(false);
     searchPanel.add(moreBtn);
   }
 
@@ -78,7 +85,8 @@ public class SearchJobs implements BaseActivity{
     for (int i = 0 ; i < data.getRows().size() ; i ++) {
       cardsPanel.add(createCard(data.getRows().get(i)));
     }
-
+    displayingItems += data.getSize();
+    moreBtn.setVisible(displayingItems > 0);
   }
 
   public MaterialCard createCard(HasFields jobPost) {
