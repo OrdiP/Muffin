@@ -40,6 +40,8 @@ public class MuffinNavagation extends BaseNavigation {
   private void loadAdminMenu() {
     appearance.clearItems();
     loadCandidatesMenu();
+    appearance.addItem(MuffinSection.jobs);
+    appearance.addItem(MuffinSection.companies);
     appearance.addSystemMenu();
   }
 
@@ -53,7 +55,7 @@ public class MuffinNavagation extends BaseNavigation {
   }
 
   private void createUserDropdown() {
-    final DropDownMenuAP dropDown = appearance.addDropdown(IconType.USER, true);
+    final DropDownMenuAP dropDown = appearance.addDropdown("User", true);
     dropDown.addItem(Core.currentUser().get(User.FirstName));
     dropDown.addItem(new Place(CoreSection.core.myAccount()));
     dropDown.addDivider();
