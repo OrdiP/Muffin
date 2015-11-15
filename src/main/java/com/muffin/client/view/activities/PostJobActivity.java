@@ -18,9 +18,6 @@ public class PostJobActivity implements BaseActivity {
   public void start(AcceptsOneWidget panel, Place place) {
     Form jobForm = createJobForm();
     BackgroundAP background = createBackground();
-    final Style style = jobForm.asWidget().getElement().getStyle();
-    style.setMarginTop(100, Style.Unit.PX);
-    style.setMarginBottom(100, Style.Unit.PX);
     background.setTop(jobForm);
     panel.setWidget(background);
   }
