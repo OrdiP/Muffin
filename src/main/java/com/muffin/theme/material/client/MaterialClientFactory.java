@@ -23,6 +23,7 @@ import com.mvu.core.client.CoreClientFactory;
 import com.mvu.core.client.InputGroupAppearance;
 import com.mvu.core.client.JsUtil;
 import com.mvu.core.client.NavBarAppearance;
+import com.mvu.core.client.NotificationAppearance;
 import com.mvu.core.client.RadioInputAppearance;
 import com.mvu.core.client.SelectInputAppearance;
 import com.mvu.core.client.SuggestInputAppearance;
@@ -69,6 +70,11 @@ public class MaterialClientFactory extends CoreClientFactory {
     postfixes.put(DateType.midnight(), icon("calendar"));
 
     builders.put(ButtonAP.class, new MButtonAPBuilder());
+  }
+
+  @Override
+  public NotificationAppearance notificationAppearance() {
+    return new MaterialnotificationAppearance();
   }
 
   protected void bindCheckBoxAndRadio() {
