@@ -16,7 +16,9 @@ public interface JobPost extends Keyable {
   Type TYPE = Type.add(JobPost.class).addFields(id);
 
   Field<String> title = TYPE.f("title", true, StringType.instance());
-  Field<String> description = TYPE.f("description", true, StringType.instance());
-  FK<Long> company = TYPE.fk("company", LongType.instance()).ref(Company.TYPE);
+  Field<String> benefit = TYPE.f("benefit", false, StringType.text());
+  Field<String> salary = TYPE.f("salary", StringType.instance());
+  Field<String> description = TYPE.f("description", false, StringType.text());
+  FK<String> company = TYPE.fk("company", StringType.key()).ref(Company.TYPE);
   Field<List<String>> keywords = TYPE.f("keywords", StringType.label().listType());
 }

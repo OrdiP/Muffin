@@ -16,13 +16,17 @@ import com.mvu.core.shared.Place;
 public class PostJobActivity implements BaseActivity {
   @Override
   public void start(AcceptsOneWidget panel, Place place) {
-    Form jobForm = new AdminPostJobForm();
+    Form jobForm = createJobForm();
     BackgroundAP background = createBackground();
     final Style style = jobForm.asWidget().getElement().getStyle();
     style.setMarginTop(100, Style.Unit.PX);
     style.setMarginBottom(100, Style.Unit.PX);
     background.setTop(jobForm);
     panel.setWidget(background);
+  }
+
+  private AdminPostJobForm createJobForm() {
+    return new AdminPostJobForm();
   }
 
   private BackgroundAP createBackground() {
