@@ -1,0 +1,19 @@
+{
+  "Content" : "activate_account.Content.htm",
+  "Context" : [ {
+    "name" : "user",
+    "type" : "User",
+    "sample" : null
+  } ],
+  "Created" : "2015-11-15T06:16:44.779Z",
+  "Description" : null,
+  "From" : "vanthuyphan@gmail.com",
+  "Labels" : null,
+  "OldName" : null,
+  "Subject" : "Hey. Please confirm your email address",
+  "To" : "${user.EmailName}",
+  "Type" : "Email",
+  "Updated" : null,
+  "__name__" : "activate_account",
+  "updated_user" : null
+}

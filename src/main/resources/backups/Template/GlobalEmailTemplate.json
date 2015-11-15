@@ -1,0 +1,33 @@
+{
+  "Content" : "GlobalEmailTemplate.Content.htm",
+  "Context" : [ {
+    "name" : "body",
+    "type" : "String",
+    "sample" : "sample body"
+  }, {
+    "name" : "email",
+    "type" : "String",
+    "sample" : "a@a.com"
+  }, {
+    "name" : "code",
+    "type" : "String",
+    "sample" : "somecode"
+  }, {
+    "name" : "mailingList",
+    "type" : "String",
+    "sample" : "aaa"
+  }, {
+    "name" : "contact",
+    "type" : "Contact",
+    "sample" : "ahBzfm1pbmh2dS1zYW5kYm94chQLEgdDb250YWN0GICAgJDstcQIDA"
+  } ],
+  "Description" : null,
+  "Labels" : [ "other" ],
+  "MultipleRecipients" : false,
+  "OldName" : null,
+  "Subject" : "Global Email Template",
+  "Type" : "Content",
+  "Updated" : "2015-10-05T23:54:35.344Z",
+  "__name__" : "GlobalEmailTemplate",
+  "updated_user" : null
+}
