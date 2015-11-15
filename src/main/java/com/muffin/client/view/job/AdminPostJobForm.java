@@ -22,7 +22,8 @@ import com.mvu.core.shared.input.Input;
  */
 public class AdminPostJobForm extends Form {
   public AdminPostJobForm() {
-    setHeading("Post new Job");
+    setHeading("POST NEW JOB");
+    setSubHeading("Free and always like this");
     setType(FormType.MEDIUM_CENTER);
     kind(JobPost.TYPE);
     final FieldValidator<List<String>> keywordsValidate = new FieldValidator<List<String>>() {
@@ -35,8 +36,8 @@ public class AdminPostJobForm extends Form {
       }
     };
     addInputs(new Input<>(JobPost.title).style(ColumnSize.LG_12.getCssName()),
-            new ListInput(JobPost.keywords).is(keywordsValidate),
-            new Input<>(JobPost.salary),
+            new ListInput(JobPost.keywords).is(keywordsValidate).style(ColumnSize.LG_12.getCssName()),
+            new Input<>(JobPost.salary).style(ColumnSize.LG_12.getCssName()),
             new DateInput(JobPost.fromDate).defaultValue(new Date()),
             new DateInput(JobPost.toDate).defaultValue(new Date()),
             new HTMLInput(JobPost.requirement),
