@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 import com.muffin.shared.MuffinSection;
+import com.muffin.shared.entity.User;
 import com.mvu.core.client.BaseActivity;
 import com.mvu.core.client.BaseCallback;
 import com.mvu.core.client.Core;
@@ -85,6 +86,7 @@ public class Signup implements IsWidget, BaseActivity {
     params.set(Credential.Password, password.getValue());
     params.set(Contact.FirstName, firstName.getValue());
     params.set(Contact.LastName, lastName.getValue());
+    params.set(User.approved, false);
     return params;
   }
 }
