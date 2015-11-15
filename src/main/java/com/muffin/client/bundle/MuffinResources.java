@@ -14,4 +14,7 @@ public interface MuffinResources extends ClientBundle {
 
   @Source("muffin.css")
   MuffinCss css();
+
+  @Source("job.jpg")
+  ImageResource postJob();
 }
