@@ -35,14 +35,14 @@ public class AdminPostJobForm extends Form {
         return null;
       }
     };
-    addInputs(new Input<>(JobPost.title).style(ColumnSize.LG_12.getCssName()),
-            new ListInput(JobPost.keywords).is(keywordsValidate).style(ColumnSize.LG_12.getCssName()),
-            new Input<>(JobPost.salary).style(ColumnSize.LG_12.getCssName()),
-            new DateInput(JobPost.fromDate).defaultValue(new Date()),
-            new DateInput(JobPost.toDate).defaultValue(new Date()),
-            new HTMLInput(JobPost.requirement),
-            new HTMLInput(JobPost.description).setHelpBlock(MuffinMessage.messages.jobDescriptionHelpBlock()),
-            new HTMLInput(JobPost.benefit),
+    addInputs(new Input<>(JobPost.title).style(ColumnSize.LG_12.getCssName()).required(true),
+            new ListInput(JobPost.keywords).is(keywordsValidate).style(ColumnSize.LG_12.getCssName()).required(true),
+            new Input<>(JobPost.salary).style(ColumnSize.LG_12.getCssName()).required(true),
+            new DateInput(JobPost.fromDate).defaultValue(new Date()).required(true),
+            new DateInput(JobPost.toDate).defaultValue(new Date()).required(true),
+            new HTMLInput(JobPost.requirement).required(true),
+            new HTMLInput(JobPost.description).setHelpBlock(MuffinMessage.messages.jobDescriptionHelpBlock()).required(true),
+            new HTMLInput(JobPost.benefit).required(true),
             new HiddenInput<>(JobPost.company).defaultValue(Core.currentUser().get(User.Company)));
     addUpdateButton("Save");
   }
