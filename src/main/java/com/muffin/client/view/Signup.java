@@ -10,9 +10,12 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 import com.muffin.shared.MuffinSection;
+import com.muffin.shared.entity.User;
 import com.mvu.core.client.BaseActivity;
+import com.mvu.core.client.BaseCallback;
 import com.mvu.core.client.Core;
 import com.mvu.core.client.PlaceController;
+import com.mvu.core.client.RemoteCall;
 import com.mvu.core.shared.HasFields;
 import com.mvu.core.shared.Place;
 import com.mvu.core.shared.entity.Contact;
@@ -34,7 +37,10 @@ public class Signup implements IsWidget, BaseActivity {
   MaterialTextBox password;
 
   @UiField
-  MaterialTextBox name;
+  MaterialTextBox lastName;
+
+  @UiField
+  MaterialTextBox firstName;
 
   @UiField
   MaterialButton submitBtn;
@@ -65,15 +71,22 @@ public class Signup implements IsWidget, BaseActivity {
   }
 
   private void registerUser() {
-    PlaceController.placeController().goTo(MuffinSection.search);
-    MaterialToast.alert("Now check your mailbox and click confirm");
+    new RemoteCall("user.SaveUserOp").input(getValues()).execute(new BaseCallback<String>() {
+      @Override
+      protected void process(String s) {
+        PlaceController.placeController().goTo(MuffinSection.search);
+        MaterialToast.alert("Now check you mailbox to confirm");
+      }
+    });
   }
 
   public HasFields getValues() {
     HasFields params = Core.CF.createBean();
     params.set(Contact.Email, email.getValue());
     params.set(Credential.Password, password.getValue());
-    params.set(Contact.Name, name.getValue());
+    params.set(Contact.FirstName, firstName.getValue());
+    params.set(Contact.LastName, lastName.getValue());
+    params.set(User.approved, false);
     return params;
   }
 }

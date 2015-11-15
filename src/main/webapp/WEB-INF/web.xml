@@ -13,7 +13,7 @@
   </servlet>
   <servlet>
     <servlet-name>app</servlet-name>
-    <servlet-class>com.mvu.appengine.AppEngine</servlet-class>
+    <servlet-class>com.muffin.server.MuffinServer</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet>

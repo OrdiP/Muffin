@@ -28,14 +28,17 @@ public class MuffinTools extends Tools {
 
   @Test
   public void reset() throws Exception {
-    RemoteAPI.getInstance().runOnDev(new Callable() {
+    RemoteAPI.getInstance().runRemoteOn("muffin-master", new Callable() {
       @Override
       public Object call() throws Exception {
-        loadTypes(true, TYPES);
-        createJobPosts();
-        return createSuperUser("su@test.com");
+        return new Bundle().find(User.TYPE).first().set(User.approved, true).save();
       }
     });
+  }
+
+  @Test
+  public void downloadTypes() {
+    upload(null, false, Template.TYPE, EventListener.TYPE);
   }
 
   public Bean createSuperUser(String email) throws Exception {
@@ -43,6 +46,7 @@ public class MuffinTools extends Tools {
     final Bundle bundle = new Bundle();
     if (bundle.exists(Credential.TYPE.entityName(), email)) {
       bundle.get(User.TYPE, email).delete();
+
       bundle.get(Credential.TYPE, email).delete();
     }
     final JSON params = JSON.make(User.FirstName, "System")

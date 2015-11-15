@@ -1,0 +1,12 @@
+{
+  "Action" : "1.Action.js",
+  "Active" : true,
+  "Created" : "2015-11-15T06:14:16.938Z",
+  "Description" : null,
+  "Events" : [ "User Created" ],
+  "Updated" : null,
+  "active" : true,
+  "description" : null,
+  "id" : 1,
+  "updated_user" : null
+}

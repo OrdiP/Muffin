@@ -32,7 +32,8 @@
       <m:MaterialPanel padding="5" shadow="1" addStyleNames="{style.panel}">
         <m:MaterialPanel addStyleNames="{style.fieldPanel}">
           <m:MaterialImage url="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRHB6aACRiq3aErNUWcLgnRLn_exRbHJSj-TZXcnuihidiaVqIFRA" type="CIRCLE" addStyleNames="{style.imgProfile} z-depth-1"/>
-          <m:MaterialTextBox ui:field="name" debugId="login_name_text_box" placeholder="Name"/>
+          <m:MaterialTextBox ui:field="firstName" debugId="login_first_name_text_box" placeholder="First Name"/>
+          <m:MaterialTextBox ui:field="lastName" debugId="login_last_name_text_box" placeholder="Last Name"/>
           <m:MaterialTextBox ui:field="email" debugId="login_email_text_box" type="email" placeholder="Email"/>
           <m:MaterialTextBox ui:field="password" debugId="login_password_text_box" type="password" placeholder="Password" />
           <m:MaterialButton ui:field="submitBtn" debugId="login_btn_submit" waves="light" text="Sign Up" width="100%"/>

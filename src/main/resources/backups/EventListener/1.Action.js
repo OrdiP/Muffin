@@ -1,0 +1,1 @@
+op.EmailTemplateOp({"template":"activate_account","user":root})
