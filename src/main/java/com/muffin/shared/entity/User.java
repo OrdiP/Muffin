@@ -9,5 +9,6 @@ import com.mvu.core.shared.field.Field;
  */
 public interface User extends com.mvu.core.shared.entity.User {
   Type TYPE = com.mvu.core.shared.entity.User.TYPE.trackCreation(true);
+
   Field<UserType> role = TYPE.f("type", false, EnumType.instance(UserType.class));
 }
