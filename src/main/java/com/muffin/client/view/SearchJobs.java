@@ -62,6 +62,7 @@ public class SearchJobs implements BaseActivity{
         new RemoteCall(ServerOps.FindOp)
                 .set(Keyable.kind, JobPost.TYPE.entityName())
                 .set(JobPost.keywords, Arrays.asList(searchBox.getValue()))
+                .set(JobPost.active, true)
                 .execute(new JSONCallback<JsCellData>() {
                   @Override
                   protected void processJS(JsCellData result) {

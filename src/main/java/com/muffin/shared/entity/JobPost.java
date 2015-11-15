@@ -7,6 +7,7 @@ import com.mvu.core.shared.Type;
 import com.mvu.core.shared.datatype.DateType;
 import com.mvu.core.shared.datatype.LongType;
 import com.mvu.core.shared.datatype.StringType;
+import com.mvu.core.shared.entity.HasStatus;
 import com.mvu.core.shared.entity.Keyable;
 import com.mvu.core.shared.field.FK;
 import com.mvu.core.shared.field.Field;
@@ -14,7 +15,7 @@ import com.mvu.core.shared.field.Field;
 /**
  * Created by Van on 11/7/15.
  */
-public interface JobPost extends Keyable {
+public interface JobPost extends Keyable, HasStatus {
   Type TYPE = Type.add(JobPost.class).addFields(id);
 
   Field<String> title = TYPE.f("title", true, StringType.instance());
@@ -25,5 +26,5 @@ public interface JobPost extends Keyable {
   Field<Date> fromDate = TYPE.f("from_date", false, DateType.midnight());
   Field<Date> toDate = TYPE.f("to_date", false, DateType.midnight());
   FK<String> company = TYPE.fk("company", StringType.key()).ref(Company.TYPE);
-  Field<List<String>> keywords = TYPE.f("keywords", StringType.label().listType());
+  Field<List<String>> keywords = TYPE.f("keywords", StringType.freeText().listType());
 }
