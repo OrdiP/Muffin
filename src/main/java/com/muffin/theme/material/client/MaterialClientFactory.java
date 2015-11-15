@@ -175,20 +175,6 @@ public class MaterialClientFactory extends CoreClientFactory {
   }
 
   @Override
-  public void bindTable(PanelAP panel, TableAP table) {
-    panel.addStyleName("ato-table");
-    table.setStyleName("table table-bordered table-condensed table-hover");
-    if (JsUtil.isMobile()) {
-      FlowPanel responsive = new FlowPanel();
-      responsive.setStyleName("table-responsive");
-      responsive.add(table);
-      panel.add(responsive);
-    } else {
-      panel.add(table);
-    }
-  }
-
-  @Override
   public ButtonBuilder buttonBuilder() {
     return new MaterialButtonBuilder();
   }

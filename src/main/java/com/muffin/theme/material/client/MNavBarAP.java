@@ -23,6 +23,7 @@ import com.mvu.core.client.widget.DropdownMenu;
 import com.mvu.core.client.widget.Navs;
 import com.mvu.core.shared.Action;
 import com.mvu.core.shared.Attempt;
+import com.mvu.core.shared.HasFields;
 import com.mvu.core.shared.Place;
 import com.mvu.core.shared.SharedConstants;
 
@@ -165,6 +166,11 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
       }
       child = child.getNextSiblingElement();
     }
+  }
+
+  @Override
+  public Element addItem(Enum section, HasFields data) {
+    return null;
   }
 
   public Element addItem(Enum section, boolean right) {

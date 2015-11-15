@@ -68,6 +68,10 @@ public class MTextInputAppearance extends MInputAppearance implements TextInputA
   }
 
   @Override
+  public void unMask() {
+  }
+
+  @Override
   public void placeHolder(String text) {
     textBox.getElement().setAttribute("placeholder", text);
   }
