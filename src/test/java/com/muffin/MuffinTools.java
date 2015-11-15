@@ -7,7 +7,7 @@ import com.mvu.appengine.Bean;
 import com.mvu.appengine.Bundle;
 import com.mvu.appengine.RemoteAPI;
 import com.mvu.appengine.Tools;
-import com.mvu.appengine.server.op.user.RegisterOp;
+import com.mvu.appengine.server.op.user.SaveUserOp;
 import com.mvu.core.client.Permission;
 import com.mvu.core.server.JSON;
 import com.mvu.core.shared.Type;
@@ -17,7 +17,6 @@ import com.mvu.core.shared.entity.EventListener;
 import com.mvu.core.shared.entity.Template;
 import com.mvu.core.shared.entity.User;
 import org.junit.Test;
-import org.quartz.Job;
 
 /**
  * Class description...
@@ -54,7 +53,7 @@ public class MuffinTools extends Tools {
             .set(Credential.Password, "pppppp");
     params.addToList(User.Permissions, false, Permission.ADMIN.name());
     params.addToList(User.Permissions, false, Permission.SYSTEM.name());
-    return new RegisterOp().execute(params);
+    return new SaveUserOp().execute(params);
 //        return null;
   }
 
