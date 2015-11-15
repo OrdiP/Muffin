@@ -39,9 +39,11 @@ public class MuffinNavagation extends BaseNavigation {
 
   private void loadAdminMenu() {
     appearance.clearItems();
-    loadCandidatesMenu();
     appearance.addItem(MuffinSection.jobs);
     appearance.addItem(MuffinSection.companies);
+    appearance.addItem(MuffinSection.search);
+    appearance.addItem(MuffinSection.post_job);
+    appearance.addItem(MuffinSection.companies_review);
     appearance.addSystemMenu();
   }
 
