@@ -88,8 +88,17 @@ public class MuffinActivityMapper extends CoreActivityMapper {
         });
       }
     });
-
-
+    add(MuffinSection.post_job, new Action<Place>() {
+      @Override
+      public void execute(final Place item) {
+        GWT.runAsync(new BaseAsyncCallback() {
+          @Override
+          protected void onCodeDownloaded() {
+            placeController().reallyGoTo(item, new CompaniesView());
+          }
+        });
+      }
+    });
   }
 
   @Override
