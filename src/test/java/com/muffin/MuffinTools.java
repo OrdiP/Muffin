@@ -43,6 +43,7 @@ public class MuffinTools extends Tools {
     final Bundle bundle = new Bundle();
     if (bundle.exists(Credential.TYPE.entityName(), email)) {
       bundle.get(User.TYPE, email).delete();
+
       bundle.get(Credential.TYPE, email).delete();
     }
     final JSON params = JSON.make(User.FirstName, "System")
