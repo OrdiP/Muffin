@@ -18,7 +18,6 @@ import com.mvu.core.client.NavBarAppearance;
 import com.mvu.core.client.PlaceController;
 import com.mvu.core.client.style.IconType;
 import com.mvu.core.client.style.Styles;
-import com.mvu.core.client.view.DebugAction;
 import com.mvu.core.client.widget.DropdownMenu;
 import com.mvu.core.client.widget.Navs;
 import com.mvu.core.shared.Action;
@@ -233,7 +232,6 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
             core.root(), core.emailHistory(), core.settings(), core.releaseNotes()}) {
       systemMenu.addItem(section);
     }
-    systemMenu.addItem("Debug", new DebugAction());
     return systemMenu;
   }
 
