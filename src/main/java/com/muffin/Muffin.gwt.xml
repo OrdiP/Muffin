@@ -4,6 +4,7 @@
 
   <inherits name="com.muffin.theme.material.Material"/>
   <inherits name="gwt.material.design.GwtMaterialDesign" />
+  <inherits name='com.mvu.gapi.GAPI'/>
 
   <entry-point class='com.muffin.client.Muffin'/>
 

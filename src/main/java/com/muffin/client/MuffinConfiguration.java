@@ -1,6 +1,5 @@
 package com.muffin.client;
 
-import com.mvu.core.client.Core;
 import com.mvu.core.client.CoreActivityMapper;
 import com.mvu.core.client.CoreConfiguration;
 import com.mvu.core.client.ModulesManager;
@@ -9,6 +8,7 @@ import com.mvu.core.client.feedback.FeedbackMod;
 import com.mvu.core.client.help.HelpMod;
 import com.mvu.core.shared.Function;
 import com.mvu.core.shared.HasFields;
+import com.mvu.gapi.client.Drive;
 
 /**
  * Date: 6/10/14 1:14 PM
@@ -34,6 +34,7 @@ public class MuffinConfiguration extends CoreConfiguration {
         return true;
       }
     });
+    Drive.init();
   }
 
   @Override

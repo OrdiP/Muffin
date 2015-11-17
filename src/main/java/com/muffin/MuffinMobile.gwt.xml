@@ -5,6 +5,8 @@
   <inherits name="com.mvu.theme.ionic.Ionic"/>
   <inherits name="gwt.material.design.GwtMaterialDesign"/>
   <inherits name="com.mvu.theme.bootstrap.Bootstrap"/>
+  <inherits name='com.mvu.gapi.GAPI'/>
+
 
   <entry-point class='com.muffin.client.Muffin'/>
 
