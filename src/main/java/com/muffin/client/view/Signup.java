@@ -16,7 +16,6 @@ import com.mvu.core.client.BaseCallback;
 import com.mvu.core.client.Core;
 import com.mvu.core.client.PlaceController;
 import com.mvu.core.client.RemoteCall;
-import com.mvu.core.client.form.Form;
 import com.mvu.core.shared.Format;
 import com.mvu.core.shared.HasFields;
 import com.mvu.core.shared.Place;
