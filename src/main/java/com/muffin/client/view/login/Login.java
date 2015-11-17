@@ -22,6 +22,7 @@ import com.mvu.core.client.RemoteCall;
 import com.mvu.core.client.ServerOps;
 import com.mvu.core.client.action.LoginAction;
 import com.mvu.core.client.form.Form;
+import com.mvu.core.shared.Format;
 import com.mvu.core.shared.HasFields;
 import com.mvu.core.shared.Place;
 import com.mvu.core.shared.datatype.BooleanType;
@@ -100,7 +101,7 @@ public class Login implements IsWidget, BaseActivity {
   }
 
   public HasFields getValues() {
-    HasFields params = Core.CF.createBean();
+    HasFields params = Format.format.bean();
     params.set(Contact.Email, email.getValue());
     params.set(Credential.Password, password.getValue());
     return params;
