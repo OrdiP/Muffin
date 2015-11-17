@@ -16,6 +16,7 @@ import com.mvu.core.client.BaseCallback;
 import com.mvu.core.client.Core;
 import com.mvu.core.client.PlaceController;
 import com.mvu.core.client.RemoteCall;
+import com.mvu.core.shared.Format;
 import com.mvu.core.shared.HasFields;
 import com.mvu.core.shared.Place;
 import com.mvu.core.shared.entity.Contact;
@@ -81,7 +82,7 @@ public class Signup implements IsWidget, BaseActivity {
   }
 
   public HasFields getValues() {
-    HasFields params = Core.CF.createBean();
+    HasFields params = Format.format.bean();
     params.set(Contact.Email, email.getValue());
     params.set(Credential.Password, password.getValue());
     params.set(Contact.FirstName, firstName.getValue());
