@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.mvu.core.shared.Type;
 import com.mvu.core.shared.datatype.DateType;
+import com.mvu.core.shared.datatype.IntegerType;
 import com.mvu.core.shared.datatype.LongType;
 import com.mvu.core.shared.datatype.StringType;
 import com.mvu.core.shared.entity.HasStatus;
@@ -26,5 +27,6 @@ public interface JobPost extends Keyable, HasStatus {
   Field<Date> fromDate = TYPE.f("from_date", false, DateType.midnight());
   Field<Date> toDate = TYPE.f("to_date", false, DateType.midnight());
   FK<String> company = TYPE.fk("company", StringType.key()).ref(Company.TYPE);
+  Field<Integer> positions = TYPE.f("positions", "Number Of Position", false, IntegerType.instance());
   Field<List<String>> keywords = TYPE.f("keywords", StringType.freeText().listType());
 }

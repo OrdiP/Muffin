@@ -46,7 +46,8 @@ public class AdminPostJobForm extends Form {
     };
     addInputs(new Input<>(JobPost.title).style(ColumnSize.LG_12.getCssName()).required(true),
             new ListInput(JobPost.keywords).is(keywordsValidate).style(ColumnSize.LG_12.getCssName()).required(true),
-            new Input<>(JobPost.salary).style(ColumnSize.LG_12.getCssName()).required(true),
+            new Input<>(JobPost.salary).required(true),
+            new Input<>(JobPost.positions).required(true),
             new DateInput(JobPost.fromDate).defaultValue(new Date()).required(true),
             new DateInput(JobPost.toDate).defaultValue(DateOps.instance.addDays(new Date(), 30)).required(true),
             new HiddenInput<>(JobPost.company).defaultValue(Core.currentUser().get(User.Company)));
