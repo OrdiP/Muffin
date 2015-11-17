@@ -16,4 +16,5 @@ public interface Company extends Keyable, Address{
   Field<String> name = TYPE.f("name", true, StringType.instance());
   Field<String> description = TYPE.f("description", true, StringType.instance());
   Field<String> district = TYPE.f("district", true, StringType.instance());
+  Field<String> logo = TYPE.f("logo", false, StringType.instance());
 }
