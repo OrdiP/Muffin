@@ -24,11 +24,12 @@ import org.junit.Test;
  * @author mvu
  */
 public class MuffinTools extends Tools {
+  private static final String MASTER = "muffin-master";
   private static final Type[] TYPES = {Configuration.TYPE, Template.TYPE, EventListener.TYPE};
 
   @Test
   public void reset() throws Exception {
-    RemoteAPI.getInstance().runRemoteOn("muffin-master", new Callable() {
+    RemoteAPI.getInstance().runRemoteOn(MASTER, new Callable() {
       @Override
       public Object call() throws Exception {
         return new Bundle().find(User.TYPE).first().set(User.approved, true).save();
@@ -38,7 +39,7 @@ public class MuffinTools extends Tools {
 
   @Test
   public void downloadTypes() {
-    upload(null, false, Template.TYPE, EventListener.TYPE);
+    upload(MASTER, false, Template.TYPE, EventListener.TYPE);
   }
 
   public Bean createSuperUser(String email) throws Exception {
