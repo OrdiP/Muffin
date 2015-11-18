@@ -229,7 +229,7 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
     DropdownMenu systemMenu = addDropdown(IconType.GEAR, true);
     for (final String[] section : new String[][]{core.templates(),
             core.messages(), core.events(), core.eventListeners(), core.libraries(),
-            core.root(), core.emailHistory(), core.settings(), core.releaseNotes()}) {
+            core.emailHistory(), core.settings(), core.releaseNotes()}) {
       systemMenu.addItem(section);
     }
     return systemMenu;
