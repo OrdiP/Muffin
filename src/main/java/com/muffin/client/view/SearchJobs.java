@@ -73,6 +73,7 @@ public class SearchJobs implements BaseActivity {
     moreBtn.setWaves("light");
     moreBtn.setTooltip("Load more results");
     moreBtn.setStyleName(ColumnSize.LG_12.getCssName());
+    moreBtn.addStyleName("text-center");
     moreBtn.setVisible(false);
     return moreBtn;
   }

@@ -62,6 +62,18 @@ public class MuffinTools extends Tools {
 //        return null;
   }
 
+  @Test
+  public void testName() throws Exception {
+    RemoteAPI.getInstance().runOnDev(new Callable() {
+      @Override
+      public Object call() throws Exception {
+        createJobPosts();
+        return null;
+      }
+    });
+
+  }
+
   private void createJobPosts() {
     Bundle bundle = new Bundle();
     for (int i = 0 ; i < 20 ; i++) {
