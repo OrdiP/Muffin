@@ -123,7 +123,7 @@ public class Login implements IsWidget, BaseActivity {
   private void loginWithFacebook() {
     String url = "http://www.facebook.com/dialog/oauth?" + "client_id="
             + "426163860915578" + "&redirect_uri="
-            + "https://muffin-master.appspot.com/execte/facebook.FacebookLogin"
+            + "https://muffin-master.appspot.com/execute/facebook.FacebookLogin"
             + "&scope=email";
     Window.Location.assign(URL.encode(url));
   }
