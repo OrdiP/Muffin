@@ -38,6 +38,7 @@
           <m:MaterialButton ui:field="btnLogin" debugId="login_btn_login" waves="light" text="Log In" width="100%"/>
           <m:MaterialButton ui:field="signupBtn" debugId="login_btn_signup" waves="light" text="Sign Up" width="100%"/>
           <m:MaterialButton icon ="mdi-social-group-add" color="red" text="SIGN IN WITH GOOGLE" ui:field="loginWithGoogle" debugId="login_btn_sign_in_with_google"  width="100%"></m:MaterialButton>
+          <m:MaterialButton icon ="mdi-social-group-add" color="blue" text="SIGN IN WITH FACEBOOK" ui:field="loginWithFacebook" debugId="login_btn_sign_in_with_google"  width="100%"></m:MaterialButton>
         </m:MaterialPanel>
       </m:MaterialPanel>
     </m:MaterialColumn>

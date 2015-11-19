@@ -1,5 +1,7 @@
 package com.muffin.client.view.login;
 
+import java.net.URLEncoder;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.ButtonElement;
 import com.google.gwt.dom.client.DivElement;
@@ -72,6 +74,9 @@ public class Login implements IsWidget, BaseActivity {
   @UiField
   MaterialButton loginWithGoogle;
 
+  @UiField
+  MaterialButton loginWithFacebook;
+
   @Override
   public Widget asWidget() {
     return rootElement;
@@ -107,6 +112,20 @@ public class Login implements IsWidget, BaseActivity {
         loginWithGoogle();
       }
     });
+    loginWithFacebook.addClickHandler(new ClickHandler() {
+      @Override
+      public void onClick(ClickEvent event) {
+        loginWithFacebook();
+      }
+    });
+  }
+
+  private void loginWithFacebook() {
+    String url = "http://www.facebook.com/dialog/oauth?" + "client_id="
+            + "426163860915578" + "&redirect_uri="
+            + "https://muffin-master.appspot.com/execte/facebook.FacebookLogin"
+            + "&scope=email";
+    Window.Location.assign(URL.encode(url));
   }
 
   private void loginWithGoogle() {
