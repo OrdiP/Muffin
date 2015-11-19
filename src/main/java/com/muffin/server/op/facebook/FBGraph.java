@@ -55,6 +55,9 @@ public class FBGraph {
     if (json.getString("gender") != null) {
       fbProfile.put("gender", json.getString("gender"));
     }
+    if (json.getString("last_name") != null) {
+      fbProfile.put("last_name", json.getString("last_name"));
+    }
     return fbProfile;
   }
 }
