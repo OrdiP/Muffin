@@ -16,6 +16,6 @@ public class MuffinCronConfig extends CronConfig {
 
   @Override
   protected void initOps() {
-    addCronJob(ValidateJobPostOp.class, "Active new job", "every day 01:00");
+    //addCronJob(ValidateJobPostOp.class, "Active new job", "every day 01:00");
   }
 }

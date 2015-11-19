@@ -22,6 +22,5 @@ public class UserOpsTest extends MuffinTestBase {
   public void testRegisterUser() throws Exception {
     getOp(RegisterUserOp.class).execute(sampleUser);
     assertEmailSent("activate_account");
-
   }
 }

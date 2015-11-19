@@ -29,9 +29,10 @@ public class MuffinTools extends Tools {
 
   @Test
   public void reset() throws Exception {
-    RemoteAPI.getInstance().runRemoteOn(MASTER, new Callable() {
+    RemoteAPI.getInstance().runRemoteOn(null, new Callable() {
       @Override
       public Object call() throws Exception {
+        loadTypes(true, Configuration.TYPE);
         return new Bundle().find(User.TYPE).first().set(User.approved, true).save();
       }
     });
