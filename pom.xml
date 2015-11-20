@@ -67,7 +67,7 @@
             <configuration>
               <modules>
                 <module>com.muffin.Muffin</module>
-                <module>com.muffin.MuffinMobile</module>
+                <!--<module>com.muffin.MuffinMobile</module>-->
               </modules>
             </configuration>
             <goals>

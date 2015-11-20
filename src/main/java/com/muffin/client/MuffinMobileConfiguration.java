@@ -1,9 +1,9 @@
 package com.muffin.client;
 
+import com.mvu.core.client.BaseNavigation;
 import com.mvu.core.client.CoreActivityMapper;
 import com.mvu.core.client.CoreConfiguration;
 import com.mvu.core.client.ModulesManager;
-import com.mvu.core.client.Navigation;
 import com.mvu.gapi.client.Drive;
 
 /**
@@ -22,7 +22,7 @@ public class MuffinMobileConfiguration extends CoreConfiguration {
   }
 
   @Override
-  public Navigation initNavigation() {
+  public BaseNavigation initNavigation() {
     return new MuffinNavagation();
   }
 }

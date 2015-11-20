@@ -11,11 +11,15 @@ import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.UListElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.mvu.core.client.Core;
 import com.mvu.core.client.JsUtil;
 import com.mvu.core.client.NavBarAppearance;
 import com.mvu.core.client.PlaceController;
+import com.mvu.core.client.appearance.PanelAP;
 import com.mvu.core.client.style.IconType;
 import com.mvu.core.client.style.Styles;
 import com.mvu.core.client.widget.DropdownMenu;
@@ -36,13 +40,14 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
   private MSideNavAP sideNav;
 
   public void fixedTop() {
-    nav.addClassName("navbar-fixed-top");
+    nav.addClassName("navbar-fixed-top navbar-lg");
     RootPanel.get(SharedConstants.UI_CONTENT).getElement().getStyle().setMarginTop(100, Style.Unit.PX);
   }
 
   public void staticTop(){
     nav.addClassName("navbar-static-top");
     nav.getStyle().setPaddingRight(50, Style.Unit.PX);
+    nav.addClassName("navbar-lg");
   }
 
   @Override
@@ -251,8 +256,14 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
   @UiField
   DivElement nav;
 
-  public MNavBarAP(RootPanel panel) {
+  public MNavBarAP(PanelAP panel) {
     root = binder.createAndBindUi(this);
+    JsUtil.addClickHandler(brand, new EventListener() {
+      @Override
+      public void onBrowserEvent(Event event) {
+        PlaceController.placeController().gotoDefaultPlace(Core.currentUser());
+      }
+    });
     panel.add(root);
   }
 

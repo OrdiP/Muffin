@@ -82,10 +82,8 @@ public class MaterialClientFactory extends CoreClientFactory {
     radioBinder = GWT.create(RadioUiBinder.class);
   }
 
-  @Override
-  public NavBarAppearance createNavBar() {
-    final RootPanel panel = Core.CF.getRootPanel(SharedConstants.UI_NAVIGATION);
-    return panel == null ? null : new MNavBarAP(panel);
+  public NavBarAppearance createNavBar(PanelAP panel) {
+    return new MNavBarAP(panel);
   }
 
   @Override
