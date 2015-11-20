@@ -15,12 +15,12 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.UIObject;
 import com.mvu.core.client.Core;
 import com.mvu.core.client.JsUtil;
 import com.mvu.core.client.NavBarAppearance;
 import com.mvu.core.client.PlaceController;
 import com.mvu.core.client.appearance.PanelAP;
-import com.mvu.core.client.style.IconType;
 import com.mvu.core.client.style.Styles;
 import com.mvu.core.client.widget.DropdownMenu;
 import com.mvu.core.client.widget.Navs;
@@ -29,6 +29,7 @@ import com.mvu.core.shared.Attempt;
 import com.mvu.core.shared.HasFields;
 import com.mvu.core.shared.Place;
 import com.mvu.core.shared.SharedConstants;
+import com.mvu.core.shared.util.StringUtils;
 
 import static com.mvu.core.client.PlaceController.placeController;
 import static com.mvu.core.shared.typekey.CoreSection.core;
@@ -40,46 +41,21 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
   private MSideNavAP sideNav;
 
   public void fixedTop() {
-    nav.addClassName("navbar-fixed-top navbar-lg");
-    RootPanel.get(SharedConstants.UI_CONTENT).getElement().getStyle().setMarginTop(100, Style.Unit.PX);
+    nav.addClassName("navbar-fixed-top blue");
+    RootPanel.get(SharedConstants.UI_CONTENT).getElement().getStyle().setMarginTop(70, Style.Unit.PX);
   }
 
-  public void staticTop(){
-    nav.addClassName("navbar-static-top");
-    nav.getStyle().setPaddingRight(50, Style.Unit.PX);
+  public void large(){
     nav.addClassName("navbar-lg");
   }
 
-  @Override
-  public LIElement createItem(String name, String label, final Attempt<String> command) {
-    final AnchorElement anchor = createAnchor(name, label);
-    JsUtil.addClickHandler(anchor, new Action<String>() {
-      @Override
-      public void execute(String name) {
-        if (command.attempt(name)) {
-          selectItem(name);
-          //          hide();
-        }
-      }
-    });
-    return createItem(name, anchor);
-  }
-
-  private AnchorElement createAnchor(String name, String label) {
-    final AnchorElement anchor = Document.get().createAnchorElement();
-    anchor.setHref("javascript:;");
-    if(name != null) {
-      anchor.setAttribute(SharedConstants.DATA_NAME, name);
-    }
-    anchor.addClassName("white-text");
-    anchor.setInnerHTML(label);
-    return anchor;
+  public void staticTop(){
+    nav.addClassName("navbar-static-top blue");
+    nav.getStyle().setPaddingRight(15, Style.Unit.PX);
   }
 
   public Element addItem(String label, Place place, boolean right) {
     final LIElement liElement = createItem(label, place);
-    liElement.getStyle().setFontSize(17, Style.Unit.PX);
-    liElement.addClassName("waves-effect waves-light white-text");
     add(right, liElement);
     return liElement.getFirstChildElement();
   }
@@ -98,14 +74,15 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
   public Element addButton(String label, final Place place) {
     final ButtonElement button = createButton(label, place);
     final LIElement liElement = createItem(label, button);
-    liElement.addClassName("waves-effect waves-light");
     add(true, liElement);
     return button;
   }
 
   private ButtonElement createButton(String label, final Place place) {
     final ButtonElement button = Document.get().createPushButtonElement();
-    button.setClassName("btn btn-primary navbar-btn waves-effect waves-light");
+    button.setClassName("btn btn-primary navbar-btn");
+    button.addClassName("waves-effect waves-light");
+    button.addClassName(Core.coreCss.fontSize150Percent());
     button.setInnerText(label);
     JsUtil.addClickHandler(button, new Action<String>() {
       @Override
@@ -174,12 +151,49 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
 
   @Override
   public Element addItem(Enum section, HasFields data) {
-    return null;
+    final Place place = new Place(section);
+    place.getParams().copyFrom(data);
+    return addItem(place.getTitle(), place, true);
   }
 
   public Element addItem(Enum section, boolean right) {
     Place place = new Place(section);
     return addItem(place.getTitle(), place, right);
+  }
+
+  public LIElement createItem(String name, String label, final Attempt<String> command) {
+    final AnchorElement anchor = createAnchor(name, label);
+    anchor.addClassName("white-text wave");
+    JsUtil.addClickHandler(anchor, new Action<String>() {
+      @Override
+      public void execute(String name) {
+        if (command.attempt(name)) {
+          selectItem(name);
+          //          hide();
+        }
+      }
+    });
+    return createItem(name, anchor);
+  }
+
+  private AnchorElement createAnchor(String name, String label) {
+    final AnchorElement anchor = Document.get().createAnchorElement();
+    anchor.addClassName("white-text waves-effect waves-light");
+    anchor.addClassName(Core.coreCss.fontSize150Percent());
+    anchor.setHref("javascript:;");
+    if(name != null) {
+      anchor.setAttribute(SharedConstants.DATA_NAME, name);
+    }
+    anchor.setInnerHTML(label);
+    return anchor;
+  }
+
+  public LIElement createItem(final String label, Element child) {
+    final LIElement liElement = Document.get().createLIElement();
+    child.setId(UIObject.DEBUG_ID_PREFIX + StringUtils.toId(label));
+    liElement.setAttribute(SharedConstants.DATA_NAME, label);
+    liElement.appendChild(child);
+    return liElement;
   }
 
   public Element addItem(Enum section) {
@@ -193,7 +207,6 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
 
   public LIElement addItem(String name, final Action<String> command, boolean right) {
     final LIElement liElement = createItem(name, command);
-    liElement.addClassName("white-text");
     add(right, liElement);
     return liElement;
   }
@@ -207,10 +220,6 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
   public void selectItem(String name) {
     select(name, leftNav);
     select(name, rightNav);
-  }
-
-  public DropdownMenu addDropdown(IconType iconType, boolean right) {
-    return addDropdown("<i class=\"fa " + iconType.getCssName() + "\"></i>", right);
   }
 
   public DropdownMenu addDropdown(String label, boolean right) {
@@ -231,10 +240,10 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
   }
 
   public DropdownMenu addSystemMenu() {
-    DropdownMenu systemMenu = addDropdown(IconType.GEAR, true);
+    DropdownMenu systemMenu = addDropdown(Core.CF.icon("gear"), true);
     for (final String[] section : new String[][]{core.templates(),
             core.messages(), core.events(), core.eventListeners(), core.libraries(),
-            core.emailHistory(), core.settings(), core.releaseNotes()}) {
+            core.cronJobs(), core.emailHistory(), core.settings(), core.releaseNotes()}) {
       systemMenu.addItem(section);
     }
     return systemMenu;
