@@ -10,8 +10,8 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 public class FBConnection {
-  public static final String FB_APP_ID = "426163860915578";
-  public static final String FB_APP_SECRET = "cc5f539593e2bd6b984d456533f772db";
+  public static final String FB_APP_ID = "426275854237712";
+  public static final String FB_APP_SECRET = "ac20539f5615f77eecd508e41597c7e5";
   public static final String REDIRECT_URI = "https://muffin-master.appspot.com/execute/facebook.FacebookLogin";
 
   static String accessToken = "";
