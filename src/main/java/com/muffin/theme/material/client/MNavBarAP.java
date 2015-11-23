@@ -267,12 +267,7 @@ public class MNavBarAP extends Navs implements NavBarAppearance{
 
   public MNavBarAP(PanelAP panel) {
     root = binder.createAndBindUi(this);
-    JsUtil.addClickHandler(brand, new EventListener() {
-      @Override
-      public void onBrowserEvent(Event event) {
-        PlaceController.placeController().gotoDefaultPlace(Core.currentUser());
-      }
-    });
+
     panel.add(root);
   }
 
