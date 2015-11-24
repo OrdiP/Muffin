@@ -16,7 +16,7 @@ import static com.mvu.core.shared.entity.Contact.Email;
 public class MuffinUserOps extends UserOps{
 
   @Override
-  protected SessionUser createSessionUser(Bean user) {
+  public SessionUser createSessionUser(Bean user) {
     SessionUser sessionUser = user.toMap(new SessionUser(), User.TYPE.fields());
     return sessionUser;
   }
