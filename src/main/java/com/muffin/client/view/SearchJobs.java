@@ -26,6 +26,7 @@ import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCard;
 import gwt.material.design.client.ui.MaterialContainer;
 import gwt.material.design.client.ui.MaterialPanel;
+import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialToast;
 
 /**
@@ -36,7 +37,9 @@ public class SearchJobs implements BaseActivity {
   private MaterialButton moreBtn;
   private MaterialPanel searchPanel;
   @UiField
-  InputElement searchBox;
+  MaterialTextBox keywords;
+  @UiField
+  MaterialTextBox location;
   @UiField
   MaterialButton searchBtn;
   @UiField
@@ -122,8 +125,8 @@ public class SearchJobs implements BaseActivity {
   public HasFields getFilters() {
     final HasFields value = Format.format.bean().set(Keyable.kind, JobPost.TYPE.entityName())
             .set(JobPost.active, true);
-    if (!StringUtils.isEmpty(searchBox.getValue())) {
-      value.set(JobPost.keywords, Arrays.asList(searchBox.getValue()));
+    if (!StringUtils.isEmpty(keywords.getValue())) {
+      value.set(JobPost.keywords, Arrays.asList(keywords.getValue()));
     }
     return value;
   }

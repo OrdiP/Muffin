@@ -33,7 +33,6 @@ public class StandardFormAppearance extends BaseFormAppearance {
   private int headingSize;
   private String subHeading;
 
-  private String title;
   private PanelAP currentRow;
 
   public void setSubType(int type) {
@@ -43,37 +42,30 @@ public class StandardFormAppearance extends BaseFormAppearance {
     setButtonStyle("btn-lg");
     headingSize = 4;
     if (type == FormType.HALF) {
-      main.setStyleName(ColumnSize.MD_6.getCssName());
+      root.setStyleName(ColumnSize.MD_6.getCssName());
     } else if (type == FormType.HALF_CENTER) {
-      main.setStyleName("col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3");
+      root.setStyleName("col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2");
       setButtonStyle("btn-lg btn-block");
     } else if (type == FormType.SMALL_CENTER) {
-      main.setStyleName("col-md-4 col-md-offset-4");
+      root.setStyleName("col-md-4 col-md-offset-4");
       setButtonStyle("btn-lg btn-block");
     } else if (type == FormType.MEDIUM_CENTER) {
-      main.setStyleName("col-md-8 col-md-offset-2");
+      root.setStyleName("col-md-8 col-md-offset-2");
     } else if (type == FormType.LARGE_CENTER) {
-      main.setStyleName("col-md-10 col-md-offset-1");
+      root.setStyleName("col-md-10 col-md-offset-1");
       setButtonStyle(null);
     } else if (type == FormType.SMALL_LEFT) {
-      main.setStyleName("col-md-5 col-lg-4");
+      root.setStyleName("col-md-5 col-lg-4");
       setButtonStyle("btn-lg btn-block");
       headingSize = 6;
     } else if (type == FormType.SMALL_RIGHT) {
-      main.setStyleName("col-lg-4 col-lg-offset-7 col-md-6 col-md-offset-5");
+      root.setStyleName("col-lg-5 col-lg-offset-6 col-md-7 col-md-offset-4");
       setButtonStyle("btn-lg btn-block");
       headingSize = 6;
     }
   }
 
-  public void push(Action<Boolean> onFinished) {
-    super.push(onFinished);
-    Core.VIEW_STACK.push(this, title == null ? heading.getInnerText() : title);
-  }
-
   public StandardFormAppearance() {
-    main = new FlowPanel();
-    main.getElement().setAttribute("role", "form");
     panel = new FlowPanel();
     panel.setStyleName("panel panel-default");
     inputPanel = new FlowPanel();
@@ -84,10 +76,15 @@ public class StandardFormAppearance extends BaseFormAppearance {
     ensureHeadingPanel();
   }
 
+  public void push(Action<Boolean> onFinished) {
+    push();
+    super.push(onFinished);
+  }
+
   public ComplexPanel ensureFooter() {
     if (footer == null) {
       footer = new FlowPanel();
-      footer.setStyleName("panel-footer blue");
+      footer.setStyleName("panel-footer");
       panel.add(footer);
     }
     return footer;
@@ -95,7 +92,6 @@ public class StandardFormAppearance extends BaseFormAppearance {
 
   public void setHeading(String text) {
     heading.setInnerHTML(text);
-    title = text;
     if (!StringUtils.isEmpty(subHeading)) {
       appendSubHeading(heading, subHeading);
     }
@@ -104,7 +100,7 @@ public class StandardFormAppearance extends BaseFormAppearance {
   public FlowPanel ensureHeadingPanel() {
     if (headingPanel == null) {
       headingPanel = new FlowPanel();
-      headingPanel.setStyleName("panel-heading white-text blue");
+      headingPanel.setStyleName("panel-heading");
       headingPanel.getElement().getStyle().setTextAlign(Style.TextAlign.CENTER);
       panel.insert(headingPanel, 0);
       heading = Document.get().createHElement(headingSize);
@@ -114,7 +110,7 @@ public class StandardFormAppearance extends BaseFormAppearance {
   }
 
   public void setSize(String mySize, String sectionSize, String inputSize) {
-    main.setStyleName(mySize);
+    root.setStyleName(mySize);
     this.sectionSize = sectionSize;
     this.inputSize = inputSize;
     if (inputSize == null) {
@@ -138,7 +134,6 @@ public class StandardFormAppearance extends BaseFormAppearance {
   }
 
   public void setSubHeading(String text) {
-    title = heading.getInnerText();
     subHeading = text;
     appendSubHeading(heading, text);
   }

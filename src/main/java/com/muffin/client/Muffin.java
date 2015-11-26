@@ -3,6 +3,7 @@ package com.muffin.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.muffin.client.bundle.MuffinResources;
+import com.muffin.client.view.Footer;
 import com.mvu.core.shared.SharedConstants;
 
 /**
@@ -13,5 +14,6 @@ public class Muffin implements EntryPoint {
   public void onModuleLoad() {
     RootPanel.get(SharedConstants.UI_NAVIGATION).addStyleName("blue wave");
     MuffinResources.RESOURCES.css().ensureInjected();
+    RootPanel.get(SharedConstants.UI_DEBUGGER).add(new Footer());
   }
 }

@@ -5,8 +5,10 @@
     <div class="input-field" >
       <m:MaterialRow>
         <m:MaterialColumn grid="s6">
-          <i class="mdi-action-search prefix"></i>
-          <input type="text" ui:field="searchBox" placeholder="Type to search..."/>
+          <m:MaterialRow>
+          <m:MaterialColumn grid="s6"><m:MaterialTextBox type="text" ui:field="keywords" placeholder="Keywords..."/></m:MaterialColumn>
+            <m:MaterialColumn grid="s6"><m:MaterialTextBox  type="text" ui:field="location" placeholder="Location..."/></m:MaterialColumn>
+          </m:MaterialRow>
         </m:MaterialColumn>
         <m:MaterialColumn grid="s6">
           <m:MaterialButton ui:field="searchBtn" text="Search" waves="light" size="large"/>

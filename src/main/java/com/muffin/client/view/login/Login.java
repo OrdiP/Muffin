@@ -55,12 +55,6 @@ public class Login implements IsWidget, BaseActivity {
   @UiField
   MaterialImage loginWithFacebook;
 
-  @UiField
-  MaterialImage loginWithLinkedIn;
-
-  @UiField
-  MaterialImage loginWithTwitter;
-
   @Override
   public Widget asWidget() {
     return rootElement;
@@ -99,8 +93,6 @@ public class Login implements IsWidget, BaseActivity {
     loginWithFacebook.addStyleName(Core.coreCss.clickable());
     loginWithGoogle.addStyleName(Core.coreCss.clickable());
     loginWithFacebook.addStyleName(Core.coreCss.margin10px());
-    loginWithLinkedIn.addStyleName(Core.coreCss.margin10px());
-    loginWithTwitter.addStyleName(Core.coreCss.margin10px());
     loginWithFacebook.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent event) {

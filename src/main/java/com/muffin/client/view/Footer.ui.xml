@@ -1,0 +1,17 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:m="urn:import:gwt.material.design.client.ui">
+  <m:MaterialFooter color="blue" copyright="© 2015 The OridP Cooperation">
+    <m:content>
+      <m:MaterialRow>
+        <m:MaterialColumn grid="s12 m6 l6">
+          <m:MaterialTitle fontSize="0.7" color="white" title="About Us" description="We are a group of java developers function on coffee and instant rice noodles. We love to build things as well as break things. Shoot us a message and we will try to get back to you as soon as possible"/>
+          <m:MaterialButton ui:field="contact_us" text="CONTACT US" color="blue lighten-2" waves="light"/>
+        </m:MaterialColumn>
+        <m:MaterialColumn grid="s12 m6 l6">
+          <m:MaterialTitle fontSize="0.7" color="white" title="We're also futune tellers" description="Don't believe that? Well, hit button below we will releal one thing nobody else knows about you"/>
+          <m:MaterialButton ui:field="tell_me" text="TELL ME" color="blue lighten-2" waves="light"/>
+        </m:MaterialColumn>
+      </m:MaterialRow>
+    </m:content>
+  </m:MaterialFooter>
+</ui:UiBinder>

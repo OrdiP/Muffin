@@ -1,10 +1,6 @@
 package com.muffin.server;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 import com.muffin.server.op.MuffinUserOps;
 import com.muffin.shared.entity.User;
@@ -22,4 +18,5 @@ public class MuffinServer extends AppEngine {
     User.TYPE.entityName();
     ServerTypeSystem.replace(UserOps.class, MuffinUserOps.class);
   }
+
 }
