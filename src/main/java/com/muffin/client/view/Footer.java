@@ -1,5 +1,7 @@
 package com.muffin.client.view;
 
+import java.util.Random;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -17,6 +19,11 @@ import gwt.material.design.client.ui.MaterialToast;
  * Created by Van on 11/26/15.
  */
 public class Footer implements IsWidget{
+
+  String[] secrets = new String[] {"YOU'RE GAY!",
+          "YOU'RE AN ASSHOLE", "YOU HAVEN'T SHOWERED FOR 3 DAYS",
+          "YOU HAVE THREE NIPPLES", "YOU BRUSH YOUR TEETH EVERY THREE DAYS",
+          "YOU'RE EMPTY", "HELLO! From other side..", "YOU HAVE NICE ASS"};
 
   private MaterialFooter footer;
 
@@ -41,7 +48,8 @@ public class Footer implements IsWidget{
     tell_me.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent event) {
-        MaterialToast.alert("YOU'RE GAY!");
+        int random = new Random().nextInt(7);
+        MaterialToast.alert(secrets[random]);
       }
     });
   }
