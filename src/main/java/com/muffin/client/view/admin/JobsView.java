@@ -29,7 +29,7 @@ public class JobsView extends CheckedTable {
   protected Form createEditView() {
     Form form = super.createEditView();
     final SelectInput companiesInput = new SelectInput(JobPost.company);
-    companiesInput.options(new LazyOptions<>(Company.TYPE, Company.id, Company.name));
+    companiesInput.options().add(new LazyOptions<>(Company.TYPE, Company.id, Company.name));
     form.addInputs(new Input<>(JobPost.title)
             , companiesInput
             ,new TextAreaInput(JobPost.description)

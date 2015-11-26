@@ -41,6 +41,11 @@ public class MaterialnotificationAppearance implements NotificationAppearance {
     container.getStyle().setDisplay(Style.Display.NONE);
   }
 
+  @Override
+  public void alert(String message) {
+    MaterialToast.alert(message);
+  }
+
   private Timer ensureTimer() {
     if (timer == null) {
       timer = new Timer() {

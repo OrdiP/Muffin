@@ -29,11 +29,14 @@ public class MuffinTools extends Tools {
 
   @Test
   public void reset() throws Exception {
-    RemoteAPI.getInstance().runRemoteOn(null, new Callable() {
+    RemoteAPI.getInstance().runRemoteOn(MASTER, new Callable() {
       @Override
       public Object call() throws Exception {
+
         loadTypes(true, Configuration.TYPE);
-        return new Bundle().find(User.TYPE).first().set(User.approved, true).save();
+        createSuperUser("su@test.com");
+        createJobPosts();
+        return null;
       }
     });
   }
@@ -54,6 +57,7 @@ public class MuffinTools extends Tools {
     final JSON params = JSON.make(User.FirstName, "System")
             .set(User.keyName, email)
             .set("role", "Admin")
+            .set(User.approved, true)
             .set(User.LastName, "User")
             .set(User.Email, email)
             .set(Credential.Password, "pppppp");

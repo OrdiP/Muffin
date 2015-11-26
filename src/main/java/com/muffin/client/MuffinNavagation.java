@@ -22,7 +22,7 @@ public class MuffinNavagation extends BaseNavigation {
 
   public MuffinNavagation() {
     super();
-    appearance.staticTop();
+    appearance.fixedTop();
     appearance.buildBrand().withLogoAndText(logo, "Muffin");
     loadCandidatesMenu();
   }
