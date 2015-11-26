@@ -9,7 +9,7 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>opServlet</servlet-name>
-    <servlet-class>com.mvu.core.server.OpServlet</servlet-class>
+    <servlet-class>com.mvu.appengine.OpServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>app</servlet-name>
