@@ -6,15 +6,15 @@
       <m:MaterialRow>
         <m:MaterialColumn grid="s6">
           <m:MaterialRow>
-          <m:MaterialColumn grid="s6"><m:MaterialTextBox type="text" ui:field="keywords" placeholder="Keywords..."/></m:MaterialColumn>
-            <m:MaterialColumn grid="s6"><m:MaterialTextBox  type="text" ui:field="location" placeholder="Location..."/></m:MaterialColumn>
+          <m:MaterialColumn grid="s6"><m:MaterialTextBox type="text" icon="mdi-communication-vpn-key" ui:field="keywords" placeholder="Keywords..."/></m:MaterialColumn>
+            <m:MaterialColumn grid="s6"><m:MaterialTextBox icon="mdi-communication-location-on" type="text" ui:field="location" placeholder="Location..."/></m:MaterialColumn>
           </m:MaterialRow>
         </m:MaterialColumn>
         <m:MaterialColumn grid="s6">
           <m:MaterialButton ui:field="searchBtn" text="Search" waves="light" size="large"/>
         </m:MaterialColumn>
       </m:MaterialRow>
-      <m:MaterialContainer ui:field="cardsPanel"></m:MaterialContainer>
+      <m:UnorderedList ui:field="cardsPanel" width="100%"></m:UnorderedList>
     </div>
   </m:MaterialPanel>
 
