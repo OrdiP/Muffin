@@ -36,7 +36,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>mailhandler</servlet-name>
-    <servlet-class>com.mvu.core.MailHandlerServlet</servlet-class>
+    <servlet-class>com.mvu.appengine.MailHandlerServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>bouncehandler</servlet-name>
