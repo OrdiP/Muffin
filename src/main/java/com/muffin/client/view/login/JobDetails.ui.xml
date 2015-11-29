@@ -1,0 +1,78 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:m="urn:import:gwt.material.design.client.ui">
+  <ui:style>
+
+    .cardStyle {
+      padding: 20px 20px 20px 20px;
+    }
+
+    .companyName {
+      font-size: xx-large;
+      font-family: monospace, serif;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    .bullet {
+      font-family: monospace, serif;
+      font-size: larger;
+      font-weight: 300;
+      background-color: black;
+      color: white;
+      margin-top: 10px;
+    }
+    .text {
+      font-family: Helvetica;
+      font-size: larger;
+      margin-top: 10px;
+
+    }
+  </ui:style>
+  <m:MaterialPanel>
+    <m:MaterialRow>
+
+
+
+      <m:MaterialColumn grid="s12 m4 l4">
+        <m:MaterialPanel addStyleNames="card {style.cardStyle}">
+          <m:MaterialImage url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/440px-Microsoft_logo_%282012%29.svg.png"></m:MaterialImage>
+
+        <m:MaterialLink ui:field="companyName" text="Microsoft" addStyleNames="card-title {style.companyName}"></m:MaterialLink>
+        <m:MaterialLabel text="Who are we" ui:field="companyDescription" addStyleNames="{style.bullet}"></m:MaterialLabel>
+          <m:MaterialLabel addStyleNames="{style.text}" text="We make products that no one uses. And we love every second of it" ui:field="companyInfo"></m:MaterialLabel>
+          <m:MaterialLabel  text="Our mission" addStyleNames="{style.bullet}" ></m:MaterialLabel>
+          <m:MaterialLabel addStyleNames="{style.text}" text="Hunter Macdonald (http://www.huntermacdonald.co.uk/) is an innovative next generation IT Services organization. We deliver on our commitments and we aim to surpass our clients expectations.
+
+We are immensely proud to count some of the world’s most successful and innovative companies as clients. These clients range from FTSE 20 and Fortune 500 organizations through to smaller, more niche companies.
+
+Headquartered in the UK, and with offices in North America and AsiaPac, our team have delivered projects to our international client base across a wide variety of industry verticals. 70% of our resources are SC cleared and 100% are passionate about delivering great outcomes for our clients." ui:field="companyMission"></m:MaterialLabel>
+          <m:MaterialLabel ui:field="location" text="Location" addStyleNames="{style.bullet}"></m:MaterialLabel>
+          <m:MaterialPanel ui:field="locationLink" ></m:MaterialPanel>
+          <hr/>
+          <m:MaterialButton text="Review This Company"></m:MaterialButton>
+        </m:MaterialPanel>
+
+      </m:MaterialColumn>
+
+
+
+
+      <m:MaterialColumn grid="s12 m8 l8">
+        <m:MaterialPanel addStyleNames="card {style.cardStyle}">
+        <m:MaterialRow>
+          <m:MaterialLink ui:field="jobTitle" addStyleNames="card-title {style.companyName}"></m:MaterialLink>
+          <m:MaterialLabel text="We're looking for" addStyleNames="{style.bullet}"></m:MaterialLabel>
+          <g:HTML text="" ui:field="jobDescription" addStyleNames="{style.text}"></g:HTML>
+          <m:MaterialLabel text="Why apply for this job" addStyleNames="{style.bullet}"></m:MaterialLabel>
+          <g:HTML ui:field="benefits" addStyleNames="{style.text}" ></g:HTML>
+          <hr/>
+          <m:MaterialButton text="Save"></m:MaterialButton>
+          <m:MaterialButton text="Apply"></m:MaterialButton>
+        </m:MaterialRow>
+        </m:MaterialPanel>
+      </m:MaterialColumn>
+
+    </m:MaterialRow>
+  </m:MaterialPanel>
+</ui:UiBinder>

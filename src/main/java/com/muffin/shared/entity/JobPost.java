@@ -28,7 +28,6 @@ public interface JobPost extends Keyable, HasStatus {
   Field<Date> toDate = TYPE.f("to_date", false, DateType.midnight());
   FK<String> company = TYPE.fk("company", StringType.key()).ref(Company.TYPE);
   Field<Integer> positions = TYPE.f("positions", "Number Of Position", false, IntegerType.instance());
-  Field<String> companyLogo = TYPE.f(company.dot(Company.logo));
 
   Field<List<String>> keywords = TYPE.f("keywords", StringType.freeText().listType());
 }

@@ -10,12 +10,14 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.Image;
+import com.muffin.shared.entity.Company;
 import com.muffin.shared.entity.JobPost;
 import com.mvu.core.client.BaseActivity;
 import com.mvu.core.client.JSONCallback;
 import com.mvu.core.client.JsCellData;
 import com.mvu.core.client.RemoteCall;
 import com.mvu.core.client.ServerOps;
+import com.mvu.core.client.designer.TableParams;
 import com.mvu.core.client.style.ColumnSize;
 import com.mvu.core.shared.Format;
 import com.mvu.core.shared.HasFields;
@@ -25,6 +27,7 @@ import com.mvu.core.shared.util.StringUtils;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCard;
 import gwt.material.design.client.ui.MaterialContainer;
+import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialToast;
@@ -103,23 +106,14 @@ public class SearchJobs implements BaseActivity {
     moreBtn.setVisible(displayingItems < data.getSize());
   }
 
-  public MaterialCard createCard(HasFields jobPost) {
-    final MaterialCard card = new MaterialCard();
-    card.setType("reveal");
-    card.setTitle(jobPost.get(JobPost.title));
-    if (jobPost.hasValue(JobPost.companyLogo)) {
-      card.setImgCard(new Image(jobPost.get(JobPost.companyLogo)));
-    }
-    card.setDescription(jobPost.get(JobPost.description));
+  public JobPostCard createCard(HasFields jobPost) {
+    final JobPostCard card = new JobPostCard();
+    card.jobTitle(jobPost.get(JobPost.title))
+            .companyLogoUrl(jobPost.get(JobPost.company.dot(Company.logo)))
+            .companyName(jobPost.get(JobPost.company.dot(Company.name)))
+            .jobDescription(jobPost.get(JobPost.description))
+            .jobId(jobPost.getId());
     card.addStyleName(ColumnSize.LG_4.getCssName());
-    MaterialButton apply = new MaterialButton("Apply", "blue", "purple");
-    apply.addClickHandler(new ClickHandler() {
-      @Override
-      public void onClick(ClickEvent event) {
-        MaterialToast.alert("Burn!!");
-      }
-    });
-    card.getActionPanel().add(apply);
     return card;
   }
 
@@ -129,6 +123,11 @@ public class SearchJobs implements BaseActivity {
     if (!StringUtils.isEmpty(keywords.getValue())) {
       value.set(JobPost.keywords, Arrays.asList(keywords.getValue()));
     }
+    value.set(com.mvu.core.shared.params.TableParams.COLUMNS,
+            Arrays.asList(JobPost.title.name(),
+                    JobPost.description.name(), JobPost.benefit.name(),
+                    JobPost.company.dot(Company.logo).name(), JobPost.company.dot(Company.name).name(),
+                    JobPost.positions.name()));
     return value;
   }
 

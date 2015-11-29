@@ -12,7 +12,7 @@ public class MRadioInputAppearance extends MInputAppearance implements BaseRadio
 
   @Override
   public CheckBox createRadio(String label) {
-    final CheckBox radio = Core.CF.createRadioButton(name, label);
+    final CheckBox radio = Core.CF.createRadioButton(name, label, true);
     root.add(radio);
     return radio;
   }

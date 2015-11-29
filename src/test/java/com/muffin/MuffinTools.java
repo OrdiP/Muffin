@@ -2,6 +2,7 @@ package com.muffin;
 
 import java.util.concurrent.Callable;
 
+import com.muffin.shared.entity.Company;
 import com.muffin.shared.entity.JobPost;
 import com.mvu.appengine.Bean;
 import com.mvu.appengine.Bundle;
@@ -80,9 +81,15 @@ public class MuffinTools extends Tools {
 
   private void createJobPosts() {
     Bundle bundle = new Bundle();
+    bundle.deleteAll(Company.TYPE);
+    bundle.deleteAll(JobPost.TYPE);
+    Bean company = bundle.create(Company.TYPE)
+            .set(Company.name, "The Roxaline Oihe")
+            .set(Company.logo, "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTc2xaveSMw5qmRsyy3ckKRV4FYOpnCfi04zIg4i2gJUqeNKbo82Q");
+    company.save();
     for (int i = 0 ; i < 20 ; i++) {
       bundle.create(JobPost.TYPE).set(JobPost.description, "Yahoo is in need of a good developer")
-      .set(JobPost.title, "Java Web Developers").save();
+      .set(JobPost.title, "Java Web Developers").set(JobPost.company, company.getKeyCode()).save();
     }
     bundle.commit();
   }

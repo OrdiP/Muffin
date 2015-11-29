@@ -14,14 +14,12 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextBoxBase;
 import com.muffin.theme.material.client.datetimepicker.DateTimePicker;
 import com.muffin.theme.material.client.datetimepicker.DateTimePickerClientBundle;
-import com.mvu.core.client.BaseRadioInputAppearance;
 import com.mvu.core.client.BaseSelectInputAppearance;
 import com.mvu.core.client.CoreClientFactory;
 import com.mvu.core.client.InputGroupAppearance;
 import com.mvu.core.client.JsUtil;
 import com.mvu.core.client.NavBarAppearance;
 import com.mvu.core.client.NotificationAppearance;
-import com.mvu.core.client.RadioInputAppearance;
 import com.mvu.core.client.SelectInputAppearance;
 import com.mvu.core.client.SuggestInputAppearance;
 import com.mvu.core.client.appearance.PanelAP;
@@ -51,8 +49,6 @@ public class MaterialClientFactory extends CoreClientFactory {
   }
 
   public void init() {
-    bindCheckBoxAndRadio();
-
     prefixes = new HashMap<>();
     prefixes.put(DecimalType.money(), icon("usd"));
     prefixes.put(DecimalType.wholeDollar(), icon("usd"));
@@ -69,9 +65,14 @@ public class MaterialClientFactory extends CoreClientFactory {
     return new MaterialnotificationAppearance();
   }
 
-  protected void bindCheckBoxAndRadio() {
-    checkBoxUiBinder = GWT.create(CheckBoxUiBinder.class);
-    radioBinder = GWT.create(RadioUiBinder.class);
+  @Override
+  protected UiBinder<Element, CheckBox> createCheckBoxBinder() {
+    return GWT.create(CheckBoxUiBinder.class);
+  }
+
+  @Override
+  protected UiBinder<Element, CheckBox> createRadioBinder() {
+    return GWT.create(RadioUiBinder.class);
   }
 
   public NavBarAppearance createNavBar(PanelAP panel) {
@@ -133,11 +134,6 @@ public class MaterialClientFactory extends CoreClientFactory {
   @Override
   public InputGroupAppearance inputGroupAppearance(String type, String pre, String post) {
     return new MInputGroupAppearance(type, pre, post);
-  }
-
-  @Override
-  public RadioInputAppearance radioInputAppearance(String name) {
-    return new BaseRadioInputAppearance(new MRadioInputAppearance(name));
   }
 
   @Override
