@@ -26,6 +26,15 @@ public class MSelectInputAppearance extends MInputAppearance implements BaseSele
     return listBox.getName();
   }
 
+  @Override
+  public boolean isEnabled() {
+    return false;
+  }
+
+  @Override
+  public void setEnabled(boolean enabled) {
+  }
+
   interface MSelectInputAppearanceUiBinder extends UiBinder<HTMLPanel, MSelectInputAppearance> {
   }
 

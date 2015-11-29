@@ -28,6 +28,7 @@ import gwt.material.design.client.ui.MaterialContainer;
 import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialToast;
+import gwt.material.design.client.ui.UnorderedList;
 
 /**
  * Created by Van on 11/7/15.
@@ -43,7 +44,7 @@ public class SearchJobs implements BaseActivity {
   @UiField
   MaterialButton searchBtn;
   @UiField
-  MaterialContainer cardsPanel;
+  UnorderedList cardsPanel;
 
   int displayingItems = 0;
 

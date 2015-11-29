@@ -124,4 +124,14 @@ public abstract class MInputAppearance extends Composite implements InputAppeara
     labelStyle("sr-only");
     setTitle(label());
   }
+
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
+
+  @Override
+  public void setEnabled(boolean enable) {
+  }
+
 }

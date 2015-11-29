@@ -8,9 +8,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SuggestOracle;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextBoxBase;
@@ -18,7 +16,6 @@ import com.muffin.theme.material.client.datetimepicker.DateTimePicker;
 import com.muffin.theme.material.client.datetimepicker.DateTimePickerClientBundle;
 import com.mvu.core.client.BaseRadioInputAppearance;
 import com.mvu.core.client.BaseSelectInputAppearance;
-import com.mvu.core.client.Core;
 import com.mvu.core.client.CoreClientFactory;
 import com.mvu.core.client.InputGroupAppearance;
 import com.mvu.core.client.JsUtil;
@@ -28,16 +25,12 @@ import com.mvu.core.client.RadioInputAppearance;
 import com.mvu.core.client.SelectInputAppearance;
 import com.mvu.core.client.SuggestInputAppearance;
 import com.mvu.core.client.appearance.PanelAP;
-import com.mvu.core.client.appearance.TableAP;
-import com.mvu.core.client.builder.ButtonBuilder;
-import com.mvu.core.client.form.ButtonAP;
 import com.mvu.core.client.form.FormAppearance;
 import com.mvu.core.client.form.FormType;
 import com.mvu.core.client.input.CheckBox;
 import com.mvu.core.client.resource.CoreJs;
 import com.mvu.core.client.style.Position;
 import com.mvu.core.client.style.Size;
-import com.mvu.core.shared.SharedConstants;
 import com.mvu.core.shared.datatype.DateType;
 import com.mvu.core.shared.datatype.DecimalType;
 import com.mvu.core.shared.input.InputAppearance;
@@ -69,7 +62,6 @@ public class MaterialClientFactory extends CoreClientFactory {
     postfixes.put(DecimalType.percentage(), "%");
     postfixes.put(DateType.midnight(), icon("calendar"));
 
-    builders.put(ButtonAP.class, new MButtonAPBuilder());
   }
 
   @Override
@@ -145,7 +137,7 @@ public class MaterialClientFactory extends CoreClientFactory {
 
   @Override
   public RadioInputAppearance radioInputAppearance(String name) {
-    return new BaseRadioInputAppearance(name, new MRadioInputAppearance(name));
+    return new BaseRadioInputAppearance(new MRadioInputAppearance(name));
   }
 
   @Override
@@ -176,11 +168,6 @@ public class MaterialClientFactory extends CoreClientFactory {
   @Override
   public String size(int value) {
     return "col-md-" + value;
-  }
-
-  @Override
-  public ButtonBuilder buttonBuilder() {
-    return new MaterialButtonBuilder();
   }
 
   @Override

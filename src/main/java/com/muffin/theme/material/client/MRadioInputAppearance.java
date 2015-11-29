@@ -32,4 +32,5 @@ public class MRadioInputAppearance extends MInputAppearance implements BaseRadio
   public String getName() {
     return name;
   }
+
 }

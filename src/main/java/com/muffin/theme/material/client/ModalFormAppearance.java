@@ -3,6 +3,7 @@ package com.muffin.theme.material.client;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.user.client.ui.ComplexPanel;
 import com.mvu.core.client.Core;
+import com.mvu.core.client.appearance.PanelAP;
 import com.mvu.core.client.form.BaseFormAppearance;
 import com.mvu.core.client.form.ButtonAP;
 import com.mvu.core.client.popup.BasePopup;
@@ -26,7 +27,6 @@ public class ModalFormAppearance extends BaseFormAppearance {
     main = popup.root;
     inputPanel = popup.body;
     inputPanel.addStyleName(Styles.ROW);
-    footer = popup.footer;
   }
 
   @Override
@@ -41,8 +41,9 @@ public class ModalFormAppearance extends BaseFormAppearance {
   }
 
   @Override
-  public ComplexPanel ensureFooter() {
-    return popup.getFooter();
+  public PanelAP ensureFooter() {
+    footer = Core.CF.panelAppearance();
+    return footer;
   }
 
   public void push(final Action<Boolean> onFinished) {

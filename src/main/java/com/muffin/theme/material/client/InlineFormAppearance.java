@@ -3,6 +3,8 @@ package com.muffin.theme.material.client;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.mvu.core.client.Core;
+import com.mvu.core.client.appearance.PanelAP;
 import com.mvu.core.client.form.BaseFormAppearance;
 import com.mvu.core.shared.input.BaseInput;
 import com.mvu.core.client.widget.Span;
@@ -37,9 +39,9 @@ public class InlineFormAppearance extends BaseFormAppearance {
   }
 
   @Override
-  public ComplexPanel ensureFooter() {
+  public PanelAP ensureFooter() {
     if(footer == null){
-      footer = new Span();
+      footer = Core.CF.panelAppearance();
       main.add(footer);
     }
     return footer;

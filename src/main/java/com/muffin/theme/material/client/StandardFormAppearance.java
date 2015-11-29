@@ -81,9 +81,9 @@ public class StandardFormAppearance extends BaseFormAppearance {
     super.push(onFinished);
   }
 
-  public ComplexPanel ensureFooter() {
+  public PanelAP ensureFooter() {
     if (footer == null) {
-      footer = new FlowPanel();
+      footer = Core.CF.panelAppearance();
       footer.setStyleName("panel-footer");
       panel.add(footer);
     }

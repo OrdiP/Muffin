@@ -5,6 +5,8 @@ import com.google.gwt.dom.client.HeadingElement;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.mvu.core.client.Core;
+import com.mvu.core.client.appearance.PanelAP;
 import com.mvu.core.client.form.BaseFormAppearance;
 import com.mvu.core.client.style.ButtonSize;
 import com.mvu.core.client.style.ColumnSize;
@@ -41,12 +43,10 @@ public class PageFormAppearance extends BaseFormAppearance {
   }
 
   @Override
-  public ComplexPanel ensureFooter() {
+  public PanelAP ensureFooter() {
     if(footer == null) {
-      footer = new FlowPanel();
-      Style style = footer.getElement().getStyle();
-      style.setClear(Style.Clear.BOTH);
-      style.setPadding(15, Style.Unit.PX);
+      footer = Core.CF.panelAppearance();
+      footer.addStyleName(Core.coreCss.pageFormFooter());
       main.add(footer);
     }
     return footer;
