@@ -19,9 +19,9 @@ public class CompaniesView extends CheckedTable {
     addEditColumn();
     addColumn(Company.name);
     addColumn(Company.description);
-    addColumn(Company.Street);
+    addColumn(Company.street);
     addColumn(Company.district);
-    addColumn(Company.City);
+    addColumn(Company.city);
     addColumn(Company.created);
   }
 
@@ -30,9 +30,9 @@ public class CompaniesView extends CheckedTable {
     Form form = super.createEditView();
     form.addInputs(new Input<>(Company.name)
             ,new TextAreaInput(Company.description)
-            ,new Input<>(Company.Street)
+            ,new Input<>(Company.street)
             ,new Input<>(Company.district)
-            ,new Input<>(Company.City)
+            ,new Input<>(Company.city)
     );
     return form;
   }

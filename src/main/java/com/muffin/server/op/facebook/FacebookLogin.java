@@ -39,14 +39,14 @@ public class FacebookLogin extends AppEngineOp {
     String lastName = user.get("last_name");
     String email = user.get("email");
     Bean bean = bundle.ensure(User.TYPE, email);
-    bean.set(User.FirstName, firstName);
-    bean.set(User.LastName, lastName);
-    bean.set(User.Email, email);
-    if (!bean.hasValue(User.CredentialKey)) {
+    bean.set(User.first_name, firstName);
+    bean.set(User.last_name, lastName);
+    bean.set(User.email, email);
+    if (!bean.hasValue(User.credentialKey)) {
       Bean credential = bundle.create(Credential.TYPE, email)
-              .set(Credential.Password, "pppppp")
-              .set(Credential.UserKey, bean.getKeyCode());
-      bean.set(User.CredentialKey, credential.getKeyCode());
+              .set(Credential.password, "pppppp")
+              .set(Credential.userKey, bean.getKeyCode());
+      bean.set(User.credentialKey, credential.getKeyCode());
     }
 
     bundle.commit();

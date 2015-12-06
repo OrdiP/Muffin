@@ -26,6 +26,7 @@ import com.mvu.core.client.appearance.PanelAP;
 import com.mvu.core.client.form.FormAppearance;
 import com.mvu.core.client.form.FormType;
 import com.mvu.core.client.input.CheckBox;
+import com.mvu.core.client.placeholder.BaseNavBarAppearance;
 import com.mvu.core.client.resource.CoreJs;
 import com.mvu.core.client.style.Position;
 import com.mvu.core.client.style.Size;

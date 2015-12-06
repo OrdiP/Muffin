@@ -11,6 +11,7 @@ import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.ValueBoxBase;
+import com.mvu.core.client.style.Size;
 import com.mvu.core.shared.DataType;
 import com.mvu.core.shared.input.TextInputAppearance;
 
@@ -94,6 +95,11 @@ public class MTextInputAppearance extends MInputAppearance implements TextInputA
   @Override
   public void setEnabled(boolean enabled) {
     textBox.setEnabled(enabled);
+  }
+
+  @Override
+  public void setSize(Size size) {
+
   }
 
   interface MTextInputAppearanceUiBinder extends UiBinder<HTMLPanel, MTextInputAppearance> {

@@ -8,7 +8,7 @@ import com.mvu.core.server.SessionUser;
 import com.mvu.core.shared.ErrorMessage;
 import com.mvu.core.shared.entity.Credential;
 
-import static com.mvu.core.shared.entity.Contact.Email;
+import static com.mvu.core.shared.entity.Contact.email;
 
 /**
  * Created by Van on 11/15/15.
@@ -22,7 +22,7 @@ public class MuffinUserOps extends UserOps{
   }
 
   public SessionUser login(JSON params) {
-    params.require(Email, Credential.Password);
+    params.require(email, Credential.password);
     Bean user = authenticate(params);
     if (user != null) {
       if (!user.is(com.mvu.core.shared.entity.User.approved)) {

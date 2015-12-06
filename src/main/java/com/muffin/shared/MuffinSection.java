@@ -9,5 +9,5 @@ public enum MuffinSection {
     public String toString() {
       return "Find Job";
     }
-  }, post_job, sign_up, companies_review, jobs, companies
+  }, post_job, sign_up, companies_review, jobs, companies, dash_board
 }

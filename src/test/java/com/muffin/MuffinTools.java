@@ -30,7 +30,7 @@ public class MuffinTools extends Tools {
 
   @Test
   public void reset() throws Exception {
-    RemoteAPI.getInstance().runRemoteOn(null, new Callable() {
+    RemoteAPI.getInstance().runRemoteOn(MASTER, new Callable() {
       @Override
       public Object call() throws Exception {
         loadTypes(true, Configuration.TYPE, Template.TYPE);
@@ -54,15 +54,15 @@ public class MuffinTools extends Tools {
 
       bundle.get(Credential.TYPE, email).delete();
     }
-    final JSON params = JSON.make(User.FirstName, "System")
+    final JSON params = JSON.make(User.first_name, "System")
             .set(User.keyName, email)
             .set("role", "Admin")
             .set(User.approved, true)
-            .set(User.LastName, "User")
-            .set(User.Email, email)
-            .set(Credential.Password, "pppppp");
-    params.addToList(User.Permissions, false, Permission.ADMIN.name());
-    params.addToList(User.Permissions, false, Permission.SYSTEM.name());
+            .set(User.last_name, "User")
+            .set(User.email, email)
+            .set(Credential.password, "pppppp");
+    params.addToList(User.permissions, false, Permission.ADMIN.name());
+    params.addToList(User.permissions, false, Permission.SYSTEM.name());
     return new SaveUserOp().execute(params);
 //        return null;
   }

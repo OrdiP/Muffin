@@ -1,0 +1,60 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:m="urn:import:gwt.material.design.client.ui">
+  <g:HTMLPanel>
+    <m:MaterialRow>
+
+      <m:MaterialColumn offset="l2" >
+          <m:MaterialCollapsible type="">
+            <m:item>
+              <m:MaterialCollapsibleItem>
+                <m:header><m:MaterialLink text="Account Information" icon="mdi-maps-flight" textColor="purple"/></m:header>
+                <m:content><m:MaterialPanel><m:MaterialTextBox ui:field="firstName" placeholder="First Name" type="text"/>
+                <m:MaterialTextBox ui:field="lastName" placeholder="Last Name" type="text"/>
+                <m:MaterialTextBox ui:field="email" placeholder="Email" type="email"/>
+                <m:MaterialTextBox ui:field="newPassword" placeholder="New Password" type="password"/>
+                <m:MaterialTextBox ui:field="confirmPassword" placeholder="Confirm Password" type="password"/></m:MaterialPanel></m:content>
+              </m:MaterialCollapsibleItem>
+            </m:item>
+            <m:item>
+              <m:MaterialCollapsibleItem>
+                <m:header><m:MaterialLink addStyleNames="active" text="Social" icon="mdi-social-people" textColor="red"/></m:header>
+                <m:content>
+                  <m:MaterialPanel>
+                    <m:MaterialLabel text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/>
+
+                  </m:MaterialPanel>
+                </m:content>
+              </m:MaterialCollapsibleItem>
+            </m:item>
+            <m:item>
+              <m:MaterialCollapsibleItem>
+                <m:header><m:MaterialLink text="Updates" icon="mdi-content-flag" textColor="orange"/></m:header>
+                <m:content><m:MaterialLabel text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/></m:content>
+              </m:MaterialCollapsibleItem>
+            </m:item>
+            <m:item>
+              <m:MaterialCollapsibleItem>
+                <m:header><m:MaterialLink text="Purchases" icon="mdi-action-shopping-cart" textColor="brown"/></m:header>
+                <m:content><m:MaterialLabel text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/></m:content>
+              </m:MaterialCollapsibleItem>
+            </m:item>
+            <m:item>
+              <m:MaterialCollapsibleItem>
+                <m:header><m:MaterialLink text="Promos" icon="mdi-image-style" textColor="blue"/></m:header>
+                <m:content><m:MaterialLabel text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/></m:content>
+              </m:MaterialCollapsibleItem>
+            </m:item>
+            <m:item>
+              <m:MaterialCollapsibleItem>
+                <m:header><m:MaterialLink text="Finance" icon="mdi-editor-insert-chart" textColor="green"/></m:header>
+              </m:MaterialCollapsibleItem>
+            </m:item>
+          </m:MaterialCollapsible>
+
+      </m:MaterialColumn>
+
+    </m:MaterialRow>
+
+  </g:HTMLPanel>
+</ui:UiBinder>

@@ -7,9 +7,11 @@ import com.muffin.client.view.Signup;
 import com.muffin.client.view.activities.PostJobActivity;
 import com.muffin.client.view.admin.CompaniesView;
 import com.muffin.client.view.admin.JobsView;
+import com.muffin.client.view.candidate.CandidatePanel;
 import com.muffin.client.view.login.Login;
 import com.muffin.shared.MuffinSection;
 import com.mvu.core.client.BaseAsyncCallback;
+import com.mvu.core.client.Core;
 import com.mvu.core.client.CoreActivityMapper;
 import com.mvu.core.client.NeedPermissionAction;
 import com.mvu.core.shared.Action;
@@ -97,10 +99,22 @@ public class MuffinActivityMapper extends CoreActivityMapper {
         });
       }
     });
+    add(MuffinSection.dash_board, new Action<Place>() {
+      @Override
+      public void execute(final Place item) {
+        GWT.runAsync(new BaseAsyncCallback() {
+          @Override
+          protected void onCodeDownloaded() {
+            placeController().reallyGoTo(item, new CandidatePanel());
+          }
+        });
+      }
+    });
   }
 
   @Override
   public Place getDefaultPlace(HasFields user) {
-    return new Place(MuffinSection.search);
+    final boolean isClient = Core.currentUser().isBlank();
+    return new Place(isClient ? MuffinSection.dash_board : MuffinSection.search);
   }
 }

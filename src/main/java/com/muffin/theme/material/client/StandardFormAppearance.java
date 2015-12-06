@@ -24,14 +24,9 @@ import com.mvu.core.shared.util.StringUtils;
  */
 public class StandardFormAppearance extends BaseFormAppearance {
 
-  private FlowPanel panel;
-  protected FlowPanel headingPanel;
-  private HeadingElement heading;
   protected String sectionSize;
   protected int sectionPerRow = 1;
   protected int numberOfSection = 0;
-  private int headingSize;
-  private String subHeading;
 
   private PanelAP currentRow;
 
@@ -66,62 +61,27 @@ public class StandardFormAppearance extends BaseFormAppearance {
   }
 
   public StandardFormAppearance() {
-    panel = new FlowPanel();
-    panel.setStyleName("panel panel-default");
+    setSubType(FormType.FULL);
+    main.setStyleName("panel panel-default");
+    ensureHeading().setStyleName("panel-heading");
     inputPanel = new FlowPanel();
     inputPanel.setStyleName("panel-body row");
-    panel.add(inputPanel);
-    main.add(panel);
-    setSubType(FormType.FULL);
-    ensureHeadingPanel();
-  }
-
-  public void push(Action<Boolean> onFinished) {
-    push();
-    super.push(onFinished);
+    main.add(inputPanel);
   }
 
   public PanelAP ensureFooter() {
     if (footer == null) {
       footer = Core.CF.panelAppearance();
       footer.setStyleName("panel-footer");
-      panel.add(footer);
+      main.add(footer);
     }
     return footer;
   }
 
-  public void setHeading(String text) {
-    heading.setInnerHTML(text);
-    if (!StringUtils.isEmpty(subHeading)) {
-      appendSubHeading(heading, subHeading);
-    }
-  }
-
-  public FlowPanel ensureHeadingPanel() {
-    if (headingPanel == null) {
-      headingPanel = new FlowPanel();
-      headingPanel.setStyleName("panel-heading");
-      headingPanel.getElement().getStyle().setTextAlign(Style.TextAlign.CENTER);
-      panel.insert(headingPanel, 0);
-      heading = Document.get().createHElement(headingSize);
-      headingPanel.getElement().appendChild(heading);
-    }
-    return headingPanel;
-  }
-
-  public void setSize(String mySize, String sectionSize, String inputSize) {
-    root.setStyleName(mySize);
-    this.sectionSize = sectionSize;
-    this.inputSize = inputSize;
-    if (inputSize == null) {
-      inputPanel.removeStyleName(Styles.ROW);
-    }
-  }
-
   @Override
-  protected void addSection(Widget section) {
+  public void addSection(PanelAP section) {
     if(numberOfSection == 0){
-      currentRow = addRow();
+      currentRow = inputPanel().addRow();
     }
     if (sectionSize != null) {
       section.setStyleName(sectionSize);
@@ -131,17 +91,5 @@ public class StandardFormAppearance extends BaseFormAppearance {
     if(numberOfSection == sectionPerRow){
       numberOfSection = 0;
     }
-  }
-
-  public void setSubHeading(String text) {
-    subHeading = text;
-    appendSubHeading(heading, text);
-  }
-
-  private void appendSubHeading(HeadingElement heading, String text) {
-    final com.google.gwt.dom.client.Element small = Document.get().createElement("small");
-    small.setInnerHTML(text);
-    heading.appendChild(Document.get().createBRElement());
-    heading.appendChild(small);
   }
 }

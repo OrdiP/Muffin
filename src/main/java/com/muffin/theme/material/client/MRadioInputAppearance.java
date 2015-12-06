@@ -3,6 +3,7 @@ package com.muffin.theme.material.client;
 import com.mvu.core.client.BaseRadioInputAppearance;
 import com.mvu.core.client.Core;
 import com.mvu.core.client.input.CheckBox;
+import com.mvu.core.client.style.Size;
 
 /**
  * Created by minh on 10/7/15.
@@ -33,4 +34,8 @@ public class MRadioInputAppearance extends MInputAppearance implements BaseRadio
     return name;
   }
 
+  @Override
+  public void setSize(Size size) {
+
+  }
 }

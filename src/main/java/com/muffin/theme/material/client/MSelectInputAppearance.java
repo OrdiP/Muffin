@@ -6,6 +6,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.mvu.core.client.BaseSelectInputAppearance;
+import com.mvu.core.client.style.Size;
 
 /**
  * Created by minh on 10/3/15.
@@ -33,6 +34,10 @@ public class MSelectInputAppearance extends MInputAppearance implements BaseSele
 
   @Override
   public void setEnabled(boolean enabled) {
+  }
+
+  @Override
+  public void setSize(Size size) {
   }
 
   interface MSelectInputAppearanceUiBinder extends UiBinder<HTMLPanel, MSelectInputAppearance> {

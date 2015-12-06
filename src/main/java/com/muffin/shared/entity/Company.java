@@ -11,7 +11,7 @@ import com.mvu.core.shared.field.Field;
  * Created by Van on 11/7/15.
  */
 public interface Company extends Keyable, Address{
-  Type TYPE = Type.add(Company.class).addFields(id).addFields(Street, City);
+  Type TYPE = Type.add(Company.class).addFields(id).addFields(street, city);
 
   Field<String> name = TYPE.f("name", true, StringType.instance());
   Field<String> description = TYPE.f("description", true, StringType.instance());

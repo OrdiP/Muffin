@@ -6,6 +6,7 @@ import com.muffin.shared.entity.User;
 import com.muffin.shared.entity.UserType;
 import com.mvu.core.client.BaseNavigation;
 import com.mvu.core.client.Core;
+import com.mvu.core.client.NavBarAppearance;
 import com.mvu.core.client.action.LogoutAction;
 import com.mvu.core.client.style.IconType;
 import com.mvu.core.client.widget.DropDownMenuAP;
@@ -32,8 +33,8 @@ public class MuffinNavagation extends BaseNavigation {
     if (Core.currentUser().isBlank()) {
       loadCandidatesMenu();
     } else {
-      loadAdminMenu(); // let's assume we all admins here
-      createUserDropdown();
+      loadAdminMenu();
+      createUserDropdown();// let's assume we all admins here
     }
   }
 
@@ -57,8 +58,8 @@ public class MuffinNavagation extends BaseNavigation {
   }
 
   private void createUserDropdown() {
-    final DropDownMenuAP dropDown = appearance.addDropdown("User", true);
-    dropDown.addItem(Core.currentUser().get(User.FirstName));
+    final DropDownMenuAP dropDown = appearance.addDropdown("User", false);
+    dropDown.addItem(Core.currentUser().get(User.first_name));
     dropDown.addItem(new Place(CoreSection.core.myAccount()));
     dropDown.addDivider();
     dropDown.addItem("Logout", new LogoutAction());

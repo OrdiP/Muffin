@@ -1,0 +1,25 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:m="urn:import:gwt.material.design.client.ui" >
+  <ui:style>
+
+    .label{
+      margin-left: 5%;
+      margin-top: 5%
+    }
+    header, main, footer {
+      padding-left: 300px;
+    }
+  </ui:style>
+  <g:HTMLPanel>
+    <m:MaterialNavBar wave="light" align="right" color="blue" text="Hello Sweet" sideBar="fixed" sideBarWidth="200">
+      <m:sidebaritem><m:MaterialLink icon="mdi-navigation-apps" iconPosition="left" text="Apps" textColor="blue"/></m:sidebaritem>
+      <m:sidebaritem><m:MaterialLink icon="mdi-social-notifications"  iconPosition="left" text="Your Profile" textColor="blue" ui:field="profile" separator="true"/></m:sidebaritem>
+      <m:sidebaritem><m:MaterialLink icon="mdi-action-explore" iconPosition="left" text="Activities" textColor="blue" ui:field="activities"  /></m:sidebaritem>
+      <m:sidebaritem><m:MaterialLink icon="mdi-action-grade" iconPosition="left" text="Saved Jobs" textColor="blue" ui:field="savedJobs"/></m:sidebaritem>
+    </m:MaterialNavBar>
+
+    <m:MaterialContainer ui:field="container"></m:MaterialContainer>
+
+  </g:HTMLPanel>
+</ui:UiBinder> 

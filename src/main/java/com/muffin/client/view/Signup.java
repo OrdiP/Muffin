@@ -83,10 +83,10 @@ public class Signup implements IsWidget, BaseActivity {
 
   public HasFields getValues() {
     HasFields params = Format.format.bean();
-    params.set(Contact.Email, email.getValue());
-    params.set(Credential.Password, password.getValue());
-    params.set(Contact.FirstName, firstName.getValue());
-    params.set(Contact.LastName, lastName.getValue());
+    params.set(Contact.email, email.getValue());
+    params.set(Credential.password, password.getValue());
+    params.set(Contact.first_name, firstName.getValue());
+    params.set(Contact.last_name, lastName.getValue());
     params.set(User.approved, false);
     return params;
   }

@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
+import com.muffin.client.Muffin;
 import com.muffin.shared.MuffinSection;
 import com.mvu.core.client.BaseActivity;
 import com.mvu.core.client.Core;
@@ -117,24 +118,24 @@ public class Login implements IsWidget, BaseActivity {
 
   private void login() {
     String emailAddress = email.getValue();
-    Core.CF.setCookie(User.Email.name(), emailAddress);
+    Core.CF.setCookie(User.email.name(), emailAddress);
     new RemoteCall(ServerOps.LoginOp).input(getValues()).execute(new JsCallback() {
       @Override
       public void processBean(HasFields results) {
         Core.changeUser(results);
-        placeController().goTo(CoreSection.core.myAccount());
+        placeController().goTo(MuffinSection.dash_board);
       }
     });
   }
 
   private void signup() {
-    PlaceController.placeController().goTo(MuffinSection.sign_up);
+    PlaceController.placeController().goTo(MuffinSection.dash_board);
   }
 
   public HasFields getValues() {
     HasFields params = Format.format.bean();
-    params.set(Contact.Email, email.getValue());
-    params.set(Credential.Password, password.getValue());
+    params.set(Contact.email, email.getValue());
+    params.set(Credential.password, password.getValue());
     return params;
   }
 }

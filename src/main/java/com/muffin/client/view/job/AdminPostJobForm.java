@@ -50,7 +50,7 @@ public class AdminPostJobForm extends Form {
             new Input<>(JobPost.positions).required(true),
             new DateInput(JobPost.fromDate).defaultValue(new Date()).required(true),
             new DateInput(JobPost.toDate).defaultValue(DateOps.instance.addDays(new Date(), 30)).required(true),
-            new HiddenInput<>(JobPost.company).defaultValue(Core.currentUser().get(User.Company)));
+            new HiddenInput<>(JobPost.company).defaultValue(Core.currentUser().get(User.company)));
     addButton("Save", new JsCallback() {
       @Override
       protected void processBean(HasFields result) {
