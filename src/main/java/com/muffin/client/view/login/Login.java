@@ -119,9 +119,9 @@ public class Login implements IsWidget, BaseActivity {
   private void login() {
     String emailAddress = email.getValue();
     Core.CF.setCookie(User.email.name(), emailAddress);
-    new RemoteCall(ServerOps.LoginOp).input(getValues()).execute(new JsCallback() {
+    new RemoteCall(ServerOps.LoginOp).input(getValues()).execute(new JsCallback<HasFields>() {
       @Override
-      public void processBean(HasFields results) {
+      public void processResult(HasFields results) {
         Core.changeUser(results);
         placeController().goTo(MuffinSection.dash_board);
       }

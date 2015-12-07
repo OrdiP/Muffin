@@ -67,9 +67,9 @@ public class JobDetails implements IsWidget, BaseActivity {
   public void push(Long id) {
     new RemoteCall(ServerOps.GetOp)
             .set(Keyable.kind, JobPost.TYPE.entityName())
-            .set(Keyable.id, id).execute(new JsCallback() {
+            .set(Keyable.id, id).execute(new JsCallback<HasFields>() {
       @Override
-      protected void processBean(HasFields result) {
+      protected void processResult(HasFields result) {
         jobDescription.setHTML("• Gay <br>" +
                 "• At least 3+ years of experience in Java J2EE; <br>" +
                 "• Expert in Java J2EE, Spring, Hibernate; <br>" +

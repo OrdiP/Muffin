@@ -51,9 +51,9 @@ public class AdminPostJobForm extends Form {
             new DateInput(JobPost.fromDate).defaultValue(new Date()).required(true),
             new DateInput(JobPost.toDate).defaultValue(DateOps.instance.addDays(new Date(), 30)).required(true),
             new HiddenInput<>(JobPost.company).defaultValue(Core.currentUser().get(User.company)));
-    addButton("Save", new JsCallback() {
+    addButton("Save", new JsCallback<HasFields>() {
       @Override
-      protected void processBean(HasFields result) {
+      protected void processResult(HasFields result) {
         data = result;
         ensureDescriptionForm().push(data);
       }
@@ -68,9 +68,9 @@ public class AdminPostJobForm extends Form {
       html.addStyleName(ColumnSize.LG_12.getCssName());
       descriptionForm.inputPanel().add(html);
       descriptionForm.addInputs(new HTMLInput(JobPost.description));
-      descriptionForm.addButton("Next", new JsCallback() {
+      descriptionForm.addButton("Next", new JsCallback<HasFields>() {
         @Override
-        protected void processBean(HasFields result) {
+        protected void processResult(HasFields result) {
           ensureRequirementForm().push(result);
         }
       });
@@ -83,9 +83,9 @@ public class AdminPostJobForm extends Form {
       requirementForm = new Form("Requirement");
       initForm(requirementForm);
       requirementForm.addInputs(new HTMLInput(JobPost.requirement));
-      requirementForm.addButton("Next", new JsCallback() {
+      requirementForm.addButton("Next", new JsCallback<HasFields>() {
         @Override
-        protected void processBean(HasFields result) {
+        protected void processResult(HasFields result) {
           ensureBenefitForm().push(result);
         }
       });
@@ -98,9 +98,9 @@ public class AdminPostJobForm extends Form {
       benefitForm = new Form("Benefit");
       initForm(benefitForm);
       benefitForm.addInputs(new HTMLInput(JobPost.benefit));
-      benefitForm.addButton("Done", new JsCallback() {
+      benefitForm.addButton("Done", new JsCallback<HasFields>() {
         @Override
-        protected void processBean(HasFields result) {
+        protected void processResult(HasFields result) {
           //TODO need more information to fixed here
         }
       });
